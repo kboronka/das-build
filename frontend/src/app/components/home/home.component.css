@@ -1,0 +1,19 @@
+.welcome {
+  color: #ffd760;
+  font-size: 6em;
+  font-weight: 900;
+  font-family: 'Averia Libre', cursive;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.splash {
+  height: 100%;
+  overflow: hidden;
+  background: url(http://localhost:4000/images/das-build.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
+}
