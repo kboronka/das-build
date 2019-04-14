@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.get('/add', (req, res) => {
+router.post('/add', (req, res) => {
   let issue = new Issue(req.body);
   issue.save()
     .then(issue => {
