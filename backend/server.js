@@ -21,8 +21,16 @@ connection.once('open', () => {
 
 app.use('/', router);
 app.use('/issues', issuesRouter);
+
+// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  var statusCode = err.status || 500;
+  res.status(statusCode).json({ code: statusCode, message: err.message });
 });
 
 app.listen(4000, () => console.log("listening on port 4000"));
