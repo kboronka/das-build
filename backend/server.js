@@ -1,26 +1,36 @@
 import express from 'express';
+import path from 'path';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import passport from 'passport';
 import mongoose from 'mongoose';
 import createError from 'http-errors';
 
 import issuesRouter from './routes/issues';
+import usersRouter from './routes/users';
+import config from './config/database';
 
 const app = express();
 const router = express.Router();
+const port = 4000;
 
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/issues');
+mongoose.connect(config.uri, { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', () => {
-  console.log('MongoDB connection established successfully!')
+  console.log(`connected to ${config.uri}`);
 });
 
-app.use('/', router);
+connection.once('error', (err) => {
+  console.log(`database error ${err}`);
+});
+
 app.use('/issues', issuesRouter);
+app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -33,4 +43,4 @@ app.use(function(err, req, res, next) {
   res.status(statusCode).json({ code: statusCode, message: err.message });
 });
 
-app.listen(4000, () => console.log("listening on port 4000"));
+app.listen(port, () => console.log(`listening on port ${port}`));
