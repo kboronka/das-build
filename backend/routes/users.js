@@ -1,12 +1,11 @@
 import express from 'express';
-import User from '../models/user';
+const router = express.Router();
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
+import config from '../config/database';
+import User from '../models/user';
 
-const router = express.Router();
-
-import Issue from '../models/Issue';
-
+// Register
 router.post('/register', (req, res) => {
   let newUser = new User({
     name: req.body.name,
@@ -25,12 +24,44 @@ router.post('/register', (req, res) => {
   });
 });
 
-router.get('/authenticate', (req, res) => {
-  res.send('authenticate');
+// Authenticate
+router.post('/authenticate', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User.getUserByUsername(username, (err, user) => {
+    if (err) throw err;
+    if (!user) {
+      return res.json({ success: false, msg: 'user not found' });
+    }
+
+    User.comparePassword(password, user.password, (err, isMatch) => {
+      if (err) throw err;
+      if (isMatch) {
+        const token = jwt.sign(user.toJSON(), config.secret, {
+          expiresIn: 604800 // 1 week
+        });
+
+        res.json({
+          success: true,
+          token: `JWT ${token}`,
+          user: {
+            id: user._id,
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            admin: user.admin
+          }
+        });
+      } else {
+        res.json({ success: false, msg: 'wrong password' });
+      }
+    });
+  });
 });
 
-router.get('/profile', (req, res) => {
-  res.send('profile');
+router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.json({ user: req.user });
 });
 
 router.get('/validate', (req, res) => {
