@@ -1,3 +1,46 @@
-<p>
-  register works!
-</p>
+<div>
+  <br />
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Register User</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br />
+    <form [formGroup]="registerForm" class="edit-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Name" formControlName="name" #name />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Username" formControlName="username" #username />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Email" formControlName="email" #email />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput type="password" placeholder="Password" formControlName="password" #password />
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput type="password"
+               placeholder="Confirm Password"
+               formControlName="confirmPassword" #confirmPassword
+               [errorStateMatcher]="matcher" />
+        <mat-error *ngIf="registerForm.hasError('notSame')">
+          Passwords do not match
+        </mat-error>
+      </mat-form-field>
+
+      <mat-divider></mat-divider>
+      <br /><br />
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <button type="submit"
+              mat-raised-button color="primary"
+              (click)="updateIssue(title.value, responsible.value, description.value, severity.value, status.value)"
+              [disabled]="registerForm.pristine || registerForm.invalid">Save</button>
+
+    </form>
+  </mat-card>
+</div>
