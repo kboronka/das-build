@@ -20,8 +20,12 @@ body {
   background-size: cover;
 }
 
-.splash .mat-toolbar.mat-primary {
-  background: transparent;
+.splash .mat-toolbar {
+  color: #ffffff;
+  background: transparent !important;
+  box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0),
+    0 0px 0px 0 rgba(0, 0, 0, 0),
+    0 0px 0px 0 rgba(0, 0, 0, 0) !important;
 }
 
 .splash .mat-toolbar #login-btn {
