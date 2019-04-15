@@ -23,3 +23,7 @@ body {
 .splash .mat-toolbar.mat-primary {
   background: transparent;
 }
+
+.splash .mat-toolbar #login-btn {
+  background-color: #3f51b5;
+}
