@@ -45,20 +45,21 @@ export class RegisterComponent implements OnInit {
     return { notSame: true };
   }
 
-  registerUser(name, username, email, password, confirmPassword) {
-    this.userService.registerUser(name, username, email, password).subscribe((data: UserPostResponse) => {
-      if (data.success) {
-        this.router.navigate(['/login']);
-        this.snackBar.open(`${name} is now registered.`, 'OK', {
-          duration: 3000
-        });
-      } else {
-        this.snackBar.open(data.msg, 'OK', {
-          duration: 3000
-        });
-      }
+  onRegisterUserClick(name, username, email, password, confirmPassword) {
+    this.userService.registerUser(name, username, email, password)
+      .subscribe((data: UserPostResponse) => {
+        if (data.success) {
+          this.router.navigate(['/login']);
+          this.snackBar.open(`${name} is now registered.`, 'OK', {
+            duration: 3000
+          });
+        } else {
+          this.snackBar.open(data.msg, 'OK', {
+            duration: 3000
+          });
+        }
 
-    });
+      });
   }
 
   ngOnInit() {

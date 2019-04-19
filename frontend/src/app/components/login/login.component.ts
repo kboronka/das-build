@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+
+import { UsersService, UserAuthInfo } from '../../services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -7,10 +12,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginForm: FormGroup;
+
+  constructor(
+    private userService: UsersService,
+    private fb: FormBuilder,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
 
   ngOnInit() {
     document.body.className = "";
+  }
+
+  onLoginButtonClick(username, password) {
+    this.userService.authenticateUser(username, password,
+      (err: string, user: UserAuthInfo, token: string) => {
+        if (err) {
+          this.snackBar.open(err, 'OK', {
+            duration: 3000
+          });
+        } else {
+          this.router.navigate(['/dashboard']);
+          this.userService.storeUserData(user, token);
+          this.snackBar.open(`${user.name} is now logged in.`, 'OK', {
+            duration: 3000
+          });
+        }
+      });
   }
 
 }

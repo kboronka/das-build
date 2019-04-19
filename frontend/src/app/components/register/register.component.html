@@ -35,11 +35,11 @@
 
       <mat-divider></mat-divider>
       <br /><br />
-      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <button mat-raised-button color="accent" routerLink="/">Back</button>&nbsp;
       <button type="submit"
               mat-raised-button color="primary"
-              (click)="registerUser(name.value, username.value, email.value, password.value, confirmPassword.value)"
-              [disabled]="registerForm.pristine || registerForm.invalid">Save</button>
+              (click)="onRegisterUserClick(name.value, username.value, email.value, password.value, confirmPassword.value)"
+              [disabled]="registerForm.pristine || registerForm.invalid">Register</button>
 
     </form>
   </mat-card>
