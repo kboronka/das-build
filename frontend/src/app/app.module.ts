@@ -20,6 +20,7 @@ import { EditComponent } from './components/edit/edit.component';
 
 import { IssueService } from './services/issue.service';
 import { UsersService } from './services/users.service';
+import { AuthGuard } from './guards/auth.guard';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
@@ -32,11 +33,11 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'create', component: CreateComponent },
-  { path: 'edit/:id', component: EditComponent },
-  { path: 'list', component: ListComponent }
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
+  { path: 'edit/:id', component: EditComponent, canActivate: [AuthGuard] },
+  { path: 'list', component: ListComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -71,7 +72,7 @@ const routes: Routes = [
     MatListModule,
     ReactiveFormsModule
   ],
-  providers: [IssueService, UsersService],
+  providers: [IssueService, UsersService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
