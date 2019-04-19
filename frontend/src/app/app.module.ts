@@ -7,7 +7,8 @@ import {
   MatToolbarModule, MatFormFieldModule,
   MatInputModule, MatOptionModule, MatCardModule,
   MatSelectModule, MatIconModule, MatButtonModule,
-  MatTableModule, MatDividerModule, MatSnackBarModule
+  MatTableModule, MatDividerModule, MatSnackBarModule,
+  MatListModule
 } from '@angular/material';
 
 // import { AppRoutingModule } from './app-routing.module';
@@ -69,6 +70,7 @@ const routes: Routes = [
     MatDividerModule,
     MatSnackBarModule,
     MatCardModule,
+    MatListModule,
     ReactiveFormsModule
   ],
   providers: [IssueService, UsersService],

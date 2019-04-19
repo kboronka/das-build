@@ -3,7 +3,27 @@
 
   <span class="fill-remaining-space"></span>
 
-  <a mat-button
+
+  <a id="profile-btn"
+     mat-button
+     [routerLink]="['/profile']"
+     routerLinkActive="mat-flat-button">
+    Profile
+  </a>
+
+  &nbsp;
+
+  <a id="logout-btn"
+     href="#"
+     mat-button
+     (click)="onLogoutClick()">
+    Logout
+  </a>
+
+  &nbsp;
+
+  <a id="register-btn"
+     mat-button
      [routerLink]="['/register']"
      routerLinkActive="mat-flat-button">
     Register
@@ -16,11 +36,5 @@
      [routerLink]="['/login']"
      routerLinkActive="mat-flat-button">
     Login
-  </a>
-  <a id="login-btn"
-     href="#"
-     mat-button
-     (click)="onLogoutClick()">
-    Logout
   </a>
 </mat-toolbar>

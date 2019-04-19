@@ -1,9 +1,10 @@
 import express from 'express';
-const router = express.Router();
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
 import config from '../config/database';
 import User from '../models/user';
+
+const router = express.Router();
 
 // Register
 router.post('/register', (req, res) => {
