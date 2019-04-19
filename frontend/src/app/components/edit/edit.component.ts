@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
-import { IssueService } from '../../issue.service';
+import { IssueService } from '../../services/issue.service';
 import { Issue } from '../../issue.model';
 
 @Component({
@@ -17,7 +17,8 @@ export class EditComponent implements OnInit {
   issue: any = {};
   updateForm: FormGroup;
 
-  constructor(private issueService: IssueService,
+  constructor(
+    private issueService: IssueService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,

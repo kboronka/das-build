@@ -4,7 +4,12 @@ import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material';
 
-import { IssueService } from '../../issue.service';
+import { UsersService } from '../../services/users.service';
+
+interface UserPostResponse {
+  success: boolean,
+  msg: string
+}
 
 @Component({
   selector: 'app-register',
@@ -16,9 +21,11 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   matcher: MyErrorStateMatcher;
 
-  constructor(private issueService: IssueService,
+  constructor(
+    private userService: UsersService,
     private fb: FormBuilder,
-    private router: Router) {
+    private router: Router,
+    private snackBar: MatSnackBar) {
     this.matcher = new MyErrorStateMatcher();
 
     this.registerForm = this.fb.group({
@@ -36,6 +43,22 @@ export class RegisterComponent implements OnInit {
 
     return pass === confirmPass ? null : { notSame: true }
     return { notSame: true };
+  }
+
+  registerUser(name, username, email, password, confirmPassword) {
+    this.userService.registerUser(name, username, email, password).subscribe((data: UserPostResponse) => {
+      if (data.success) {
+        this.router.navigate(['/login']);
+        this.snackBar.open(`${name} is now registered.`, 'OK', {
+          duration: 3000
+        });
+      } else {
+        this.snackBar.open(data.msg, 'OK', {
+          duration: 3000
+        });
+      }
+
+    });
   }
 
   ngOnInit() {

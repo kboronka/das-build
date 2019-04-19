@@ -18,7 +18,9 @@ import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 
-import { IssueService } from './issue.service';
+import { IssueService } from './services/issue.service';
+import { UsersService } from './services/users.service';
+
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -69,7 +71,7 @@ const routes: Routes = [
     MatCardModule,
     ReactiveFormsModule
   ],
-  providers: [IssueService],
+  providers: [IssueService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

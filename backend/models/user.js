@@ -38,14 +38,19 @@ module.exports.getUserByUsername = function(username, callback) {
 }
 
 module.exports.addUser = function(newUser, callback) {
-  console.log('newUser', newUser);
-  bcrypt.genSalt(10, (err, salt) => {
-    if (err) throw err;
+  module.exports.getUserByUsername(newUser.username, (err, user) => {
+    if (user) {
+      return callback(`User ${newUser.username} already registered`, null);
+    }
 
-    bcrypt.hash(newUser.password, salt, (err, hash) => {
+    bcrypt.genSalt(10, (err, salt) => {
       if (err) throw err;
-      newUser.password = hash;
-      newUser.save(callback);
+
+      bcrypt.hash(newUser.password, salt, (err, hash) => {
+        if (err) throw err;
+        newUser.password = hash;
+        newUser.save(callback);
+      });
     });
   });
 }
