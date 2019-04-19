@@ -79,4 +79,9 @@ export class UsersService {
     this.authToken = token;
     return token;
   }
+
+  loggedIn() {
+    const storageToken = localStorage.getItem('id_token');
+    return storageToken != null;
+  }
 }

@@ -4,37 +4,50 @@
   <span class="fill-remaining-space"></span>
 
 
-  <a id="profile-btn"
-     mat-button
-     [routerLink]="['/profile']"
-     routerLinkActive="mat-flat-button">
-    Profile
-  </a>
+  <div *ngIf="userService.loggedIn()">
+    <a id="dashboard-btn"
+       *ngIf="userService.loggedIn()"
+       mat-button
+       [routerLink]="['/dashboard']"
+       routerLinkActive="mat-flat-button">
+      Dashboard
+    </a>
 
-  &nbsp;
+    &nbsp;
 
-  <a id="logout-btn"
-     href="#"
-     mat-button
-     (click)="onLogoutClick()">
-    Logout
-  </a>
+    <a id="profile-btn"
+       *ngIf="userService.loggedIn()"
+       mat-button
+       [routerLink]="['/profile']"
+       routerLinkActive="mat-flat-button">
+      Profile
+    </a>
 
-  &nbsp;
+    &nbsp;
 
-  <a id="register-btn"
-     mat-button
-     [routerLink]="['/register']"
-     routerLinkActive="mat-flat-button">
-    Register
-  </a>
+    <a id="logout-btn"
+       *ngIf="userService.loggedIn()"
+       href="#"
+       mat-button
+       (click)="onLogoutClick()">
+      Logout
+    </a>
+  </div>
+  <div *ngIf="!userService.loggedIn()">
+    <a id="register-btn"
+       mat-button
+       [routerLink]="['/register']"
+       routerLinkActive="mat-flat-button">
+      Register
+    </a>
 
-  &nbsp;
+    &nbsp;
 
-  <a id="login-btn"
-     mat-button
-     [routerLink]="['/login']"
-     routerLinkActive="mat-flat-button">
-    Login
-  </a>
+    <a id="login-btn"
+       mat-button
+       [routerLink]="['/login']"
+       routerLinkActive="mat-flat-button">
+      Login
+    </a>
+  </div>
 </mat-toolbar>

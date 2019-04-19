@@ -24,8 +24,6 @@ export class ProfileComponent implements OnInit {
     document.body.className = "";
     this.userService.getProfile()
       .subscribe((profile: ProfileResponce) => {
-        console.log('profile', profile);
-
         this.user = profile.user;
       }, err => {
         console.log(err);

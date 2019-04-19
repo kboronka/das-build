@@ -11,7 +11,6 @@ import {
   MatListModule
 } from '@angular/material';
 
-// import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -57,7 +56,6 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    // AppRoutingModule,
     RouterModule.forRoot(routes),
     MatToolbarModule,
     MatFormFieldModule,
