@@ -17,7 +17,6 @@ export class ListComponent implements OnInit {
   constructor(private issueService: IssueService, private router: Router) { }
 
   ngOnInit() {
-    document.body.className = "";
     this.fetchIssues();
   }
 

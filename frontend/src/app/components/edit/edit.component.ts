@@ -37,8 +37,6 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit() {
-    document.body.className = "";
-
     this.route.params.subscribe((params => {
       this.id = params.id;
       this.issueService.getIssueById(this.id).subscribe(res => {

@@ -29,8 +29,6 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    document.body.className = "";
-  }
+  ngOnInit() { }
 
 }

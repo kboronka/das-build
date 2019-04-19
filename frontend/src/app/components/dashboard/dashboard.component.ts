@@ -9,8 +9,6 @@ export class DashboardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    document.body.className = "";
-  }
+  ngOnInit() { }
 
 }

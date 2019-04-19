@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-list',
@@ -7,16 +7,7 @@ import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
-    console.log('constructor');
-    document.body.className = "splash";
-  }
+  constructor() { }
 
-  ngOnInit() {
-    console.log('ngOnInit');
-  }
-
-  ngOnDestory() {
-    console.log('ngOnDestory');
-  }
+  ngOnInit() { }
 }

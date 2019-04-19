@@ -62,9 +62,7 @@ export class RegisterComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
-    document.body.className = "";
-  }
+  ngOnInit() { }
 }
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
