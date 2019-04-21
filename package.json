@@ -6,8 +6,6 @@
   "scripts": {
     "ng": "ng",
     "test": "ng test",
-    "dev-ng": "ng build --watch",
-    "dev-backend": "babel-watch server.js",
     "dev": "concurrently \"ng build --watch\" \"babel-watch server.js\"",
     "build": "ng build",
     "lint": "ng lint",
