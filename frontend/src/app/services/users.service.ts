@@ -14,7 +14,6 @@ interface AuthResponse {
   user: UserAuthInfo
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
