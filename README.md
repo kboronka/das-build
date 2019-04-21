@@ -13,6 +13,5 @@
 
 
 ## Development server
-1. Run `npm run dev` from the backend folder
-2. Run `ng build --watch` from the frontend folder.
-3. Navigate to `http://localhost:8080/`. The app will automatically reload if you change any of the source files.
+1. Run `npm run dev`
+2. Navigate to `http://localhost:8080/`. The app will automatically reload if you change any of the source files.
