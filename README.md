@@ -13,10 +13,11 @@
 
 
 ## Development server
-### frontend
-Run `ng serve` from the frontend folder.
-Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ### backend
 Run `npm run dev` from the backend folder
 Navigate to `http://localhost:4000/`. The app will automatically reload if you change any of the source files.
+
+### frontend
+Run `ng build --watch` from the frontend folder.
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
