@@ -5,16 +5,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class IssueService {
-  uri = 'http://localhost:4000';
 
   constructor(private http: HttpClient) { }
 
   getIssues() {
-    return this.http.get(`${this.uri}/issues`);
+    return this.http.get(`issues`);
   }
 
   getIssueById(id) {
-    return this.http.get(`${this.uri}/issues/${id}`);
+    return this.http.get(`issues/${id}`);
   }
 
   addIssue(title, responsible, description, severity) {
@@ -25,7 +24,7 @@ export class IssueService {
       severity: severity
     }
 
-    return this.http.post(`${this.uri}/issues/add`, issue);
+    return this.http.post(`issues/add`, issue);
   }
 
   updateIssue(id, title, responsible, description, severity, status) {
@@ -37,10 +36,10 @@ export class IssueService {
       status: status
     }
 
-    return this.http.post(`${this.uri}/issues/update/${id}`, issue);
+    return this.http.post(`issues/update/${id}`, issue);
   }
 
   deleteIssue(id) {
-    return this.http.get(`${this.uri}/issues/delete/${id}`);
+    return this.http.get(`issues/delete/${id}`);
   }
 }
