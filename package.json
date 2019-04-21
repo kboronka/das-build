@@ -11,9 +11,13 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "engines": {
+    "node": "10.3.0"
+  },
   "private": true,
   "keywords": [],
   "author": "Kevin Boronka",
+  "repository": "https://github.com/kboronka/mean-three",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
