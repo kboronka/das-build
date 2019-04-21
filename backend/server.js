@@ -12,7 +12,7 @@ import config from './config/database';
 
 const app = express();
 const router = express.Router();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
