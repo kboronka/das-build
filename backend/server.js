@@ -12,7 +12,6 @@ import config from './config/database';
 
 const app = express();
 const router = express.Router();
-const port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -21,11 +20,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')(passport);
 
-mongoose.connect(config.uri, { useNewUrlParser: true });
+mongoose.connect(config.database, { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', () => {
-  console.log(`connected to ${config.uri}`);
+  console.log(`connected to ${config.database}`);
 });
 
 connection.once('error', (err) => {
@@ -49,4 +48,4 @@ app.use(function(err, req, res, next) {
   res.status(statusCode).json({ code: statusCode, message: err.message });
 });
 
-app.listen(port, () => console.log(`listening on port ${port}`));
+app.listen(config.port, () => console.log(`listening on port ${config.port}`));
