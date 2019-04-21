@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mean-app-two": {
+    "das-build": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -55,18 +55,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "mean-app-two:build"
+            "browserTarget": "das-build:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "mean-app-two:build:production"
+              "browserTarget": "das-build:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mean-app-two:build"
+            "browserTarget": "das-build:build"
           }
         },
         "test": {
@@ -101,7 +101,7 @@
         }
       }
     },
-    "mean-app-two-e2e": {
+    "das-build-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -110,11 +110,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "mean-app-two:serve"
+            "devServerTarget": "das-build:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "mean-app-two:serve:production"
+              "devServerTarget": "das-build:serve:production"
             }
           }
         },
@@ -130,5 +130,5 @@
       }
     }
   },
-  "defaultProject": "mean-app-two"
+  "defaultProject": "das-build"
 }
