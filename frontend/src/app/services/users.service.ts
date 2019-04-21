@@ -18,7 +18,6 @@ interface AuthResponse {
   providedIn: 'root'
 })
 export class UsersService {
-  uri = 'http://localhost:4000';
   authToken: string;
   user: UserAuthInfo;
 
@@ -34,7 +33,7 @@ export class UsersService {
       admin: false
     }
 
-    return this.http.post(`${this.uri}/users/register`, user);
+    return this.http.post(`users/register`, user);
   }
 
   authenticateUser(username: string, password: string, callback) {
@@ -43,7 +42,7 @@ export class UsersService {
       password: password
     }
 
-    this.http.post(`${this.uri}/users/authenticate`, user)
+    this.http.post(`users/authenticate`, user)
       .subscribe((data: AuthResponse) => {
         if (data.success) {
           callback(null, data.user, data.token);
@@ -70,7 +69,7 @@ export class UsersService {
     let header = new HttpHeaders()
       .append('Authorization', this.getToken());
 
-    return this.http.get(`${this.uri}/users/profile`, { headers: header });
+    return this.http.get(`users/profile`, { headers: header });
   }
 
   getToken(): string {
