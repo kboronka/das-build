@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService, UserAuthInfo } from '../../services/users.service';
-import { User } from '../../../../../backend/models/user';
+import { User } from '../../../../models/user';
 
 interface ProfileResponce {
   user: User;
