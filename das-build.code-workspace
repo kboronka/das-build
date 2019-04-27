@@ -17,7 +17,7 @@
       "indent_size": 2
     },
     "html.format.enable": true,
-    "html.format.wrapLineLength": 22120,
+    "html.format.wrapLineLength": 120,
     "html.format.wrapAttributes": "auto",
     "cSpell.words": [
       "jira",

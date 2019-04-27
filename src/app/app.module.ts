@@ -28,6 +28,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProjectListComponent } from './components/project-list/project-list.component';
+import { ProjectCreateComponent } from './components/project-create/project-create.component';
+import { ProjectEditComponent } from './components/project-edit/project-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -51,7 +54,10 @@ const routes: Routes = [
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProjectListComponent,
+    ProjectCreateComponent,
+    ProjectEditComponent
   ],
   imports: [
     BrowserModule,
