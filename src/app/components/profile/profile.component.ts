@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UsersService, UserAuthInfo } from '../../services/users.service';
 import { User } from '../../../../models/user.model';
 
-interface ProfileResponce {
+interface ProfileResponse {
   user: User;
 }
 
@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getProfile()
-      .subscribe((profile: ProfileResponce) => {
+      .subscribe((profile: ProfileResponse) => {
         this.user = profile.user;
       }, err => {
         console.log(err);
