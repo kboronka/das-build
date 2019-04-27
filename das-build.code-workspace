@@ -18,6 +18,10 @@
     },
     "html.format.enable": true,
     "html.format.wrapLineLength": 120,
-    "html.format.wrapAttributes": "auto"
+    "html.format.wrapAttributes": "auto",
+    "cSpell.words": [
+      "jira",
+      "upsert"
+    ]
   }
 }
