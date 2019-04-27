@@ -1,8 +1,19 @@
 import express from 'express';
 import passport from 'passport';
-import Project from '../models/project.model';
+import { Project, getProjects, upsertProject, deleteProject } from '../models/project.model';
 
 const router = express.Router();
+
+// Get list of projects
+router.get('/', (req, res) => {
+  getProjects((err, projects) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(projects);
+    }
+  });
+});
 
 // Create new project
 router.post('/create',
@@ -14,7 +25,7 @@ router.post('/create',
       steps: []
     });
 
-    Project.createProject(newProject, (err, project) => {
+    upsertProject(newProject, (err, project) => {
       if (err) {
         res.json({ success: false, msg: err });
       } else {
@@ -24,27 +35,14 @@ router.post('/create',
   }
 );
 
-// Get list of projects
-router.get('/', (req, res) => {
-  Project.find((err, projects) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(projects);
-    }
-  });
-});
-
 // Profile
-router.get('/profile',
+router.get('/:id/delete',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+
+
     res.json({ user: req.user });
   }
 );
-
-router.get('/validate', (req, res) => {
-  res.send('validate');
-});
 
 module.exports = router;
