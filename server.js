@@ -6,9 +6,9 @@ import passport from 'passport';
 import mongoose from 'mongoose';
 import createError from 'http-errors';
 
-import issuesRouter from './routes/issues';
-import projectsRouter from './routes/projects';
-import usersRouter from './routes/users';
+import issuesRouter from './routes/issues.route';
+import projectsRouter from './routes/projects.route';
+import usersRouter from './routes/users.route';
 import config from './config/config';
 
 const app = express();

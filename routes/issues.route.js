@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import Issue from '../models/Issue';
+import Issue from '../models/issue.model';
 
 router.get('/', (req, res) => {
   Issue.find((err, issues) => {
