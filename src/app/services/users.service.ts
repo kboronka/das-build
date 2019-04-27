@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export interface UserAuthInfo {
-  name: string,
-  username: string,
-  email: string,
-  admin: boolean
+  name: string;
+  username: string;
+  email: string;
+  admin: boolean;
 }
 
 interface AuthResponse {
-  success: boolean,
-  token: string,
-  user: UserAuthInfo
+  success: boolean;
+  token: string;
+  user: UserAuthInfo;
 }
 
 @Injectable({
@@ -20,7 +20,6 @@ interface AuthResponse {
 export class UsersService {
   authToken: string;
   user: UserAuthInfo;
-
 
   constructor(private http: HttpClient) { }
 
