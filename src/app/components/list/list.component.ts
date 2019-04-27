@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Issue } from '../../issue.model';
+import { IIssue } from '../../interfaces/issue.model';
 import { IssueService } from '../../services/issue.service';
 
 @Component({
@@ -11,10 +11,13 @@ import { IssueService } from '../../services/issue.service';
 })
 export class ListComponent implements OnInit {
 
-  issues: Issue[];
+  issues: IIssue[];
   displayedColumns = ['title', 'responsible', 'severity', 'status', 'actions'];
 
-  constructor(private issueService: IssueService, private router: Router) { }
+  constructor(
+    private issueService: IssueService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.fetchIssues();
@@ -23,7 +26,7 @@ export class ListComponent implements OnInit {
   fetchIssues() {
     this.issueService
       .getIssues()
-      .subscribe((data: Issue[]) => {
+      .subscribe((data: IIssue[]) => {
         this.issues = data;
       });
   }
