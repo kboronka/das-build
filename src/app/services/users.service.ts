@@ -26,10 +26,10 @@ export class UsersService {
 
   registerUser(name: string, username: string, email: string, password: string) {
     const user = {
-      name: name,
-      username: username,
-      email: email,
-      password: password,
+      name,
+      username,
+      email,
+      password,
       admin: false
     }
 
@@ -38,8 +38,8 @@ export class UsersService {
 
   authenticateUser(username: string, password: string, callback) {
     const user = {
-      username: username,
-      password: password
+      username,
+      password
     }
 
     this.http.post(`users/authenticate`, user)
@@ -66,7 +66,7 @@ export class UsersService {
   }
 
   getProfile() {
-    let header = new HttpHeaders()
+    const header = new HttpHeaders()
       .append('Authorization', this.getToken());
 
     return this.http.get(`users/profile`, { headers: header });
