@@ -8,7 +8,7 @@ import createError from 'http-errors';
 
 import issuesRouter from './routes/issues';
 import usersRouter from './routes/users';
-import config from './config/database';
+import config from './config/config';
 
 const app = express();
 const router = express.Router();

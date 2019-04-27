@@ -13,7 +13,7 @@
 /public/index.html
 
 # config files
-/config/database.js
+/config/config.js
 
 # profiling files
 chrome-profiler-events.json
