@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import createError from 'http-errors';
 
 import issuesRouter from './routes/issues';
+import projectsRouter from './routes/projects';
 import usersRouter from './routes/users';
 import config from './config/config';
 
@@ -32,6 +33,7 @@ connection.once('error', (err) => {
 });
 
 app.use('/issues', issuesRouter);
+app.use('/projects', projectsRouter);
 app.use('/users', usersRouter);
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
