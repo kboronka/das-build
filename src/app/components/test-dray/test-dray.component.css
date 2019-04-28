@@ -1,37 +1,7 @@
-.my-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.full-width {
-  width: 100%;
-}
-
-.form-card {
-  max-width: 100%;
-}
-
-.edit-project-form {
-  min-width: 550px;
-  width: 100%;
-}
-
-.field-full-width {
-  width: 100%;
-}
-
-.mat-column-right {
-  text-align: center;
-  width: 136px;
-}
-
-
 .container {
-  width: 100%;
+  width: 400px;
   max-width: 100%;
-  min-width: 550px;
-  margin: 0 0px;
+  margin: 0 20px;
   display: inline-block;
   vertical-align: top;
 }

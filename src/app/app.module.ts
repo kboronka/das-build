@@ -8,7 +8,7 @@ import {
   MatInputModule, MatOptionModule, MatCardModule,
   MatSelectModule, MatIconModule, MatButtonModule,
   MatTableModule, MatDividerModule, MatSnackBarModule,
-  MatListModule
+  MatListModule, MatGridListModule, MatMenuModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -27,6 +27,8 @@ import { ProjectListComponent } from './components/project-list/project-list.com
 import { ProjectCreateComponent } from './components/project-create/project-create.component';
 import { ProjectEditComponent } from './components/project-edit/project-edit.component';
 import { ProjectComponent } from './components/project/project.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { StepFormComponent } from './components/step-form/step-form.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -52,7 +54,8 @@ const routes: Routes = [
     ProjectListComponent,
     ProjectCreateComponent,
     ProjectEditComponent,
-    ProjectComponent
+    ProjectComponent,
+    StepFormComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,10 @@ const routes: Routes = [
     MatSnackBarModule,
     MatCardModule,
     MatListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatGridListModule,
+    MatMenuModule,
+    DragDropModule
   ],
   providers: [UsersService, AuthGuard],
   bootstrap: [AppComponent]

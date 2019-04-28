@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IProject } from '../interfaces/project.model';
+import { IStep } from 'src/app/interfaces/step.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -35,10 +36,11 @@ export class ProjectService {
     return this.http.post(`projects/add`, project, { headers: header });
   }
 
-  editProject(id, name, trunkUrl) {
+  editProject(id, name, trunkUrl, steps: [IStep]) {
     const project = {
       name,
-      trunkUrl
+      trunkUrl,
+      steps
     };
 
     const header = new HttpHeaders()

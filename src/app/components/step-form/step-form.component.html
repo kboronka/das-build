@@ -1,0 +1,13 @@
+<div>
+  <form [formGroup]="stepForm" class="my-form">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="description" formControlName="description" #description />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="command" formControlName="command" #command />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="arguments" formControlName="arguments" #arguments />
+    </mat-form-field>
+  </form>
+</div>

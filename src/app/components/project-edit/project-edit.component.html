@@ -1,27 +1,40 @@
-<div class="form">
-  <br />
-  <mat-card class="form-card">
-    <section class="mat-typography">
-      <h3>Update Project</h3>
-    </section>
-    <mat-divider></mat-divider>
-    <br />
-    <form [formGroup]="editForm" class="create-project-form">
-      <mat-form-field class="field-full-width">
+<mat-toolbar>
+  <span>Update Project</span>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="productForm" class="my-form">
+      <mat-form-field class="full-width">
         <input matInput placeholder="Project Name" formControlName="name" #name />
       </mat-form-field>
 
-      <mat-form-field class="field-full-width">
+      <mat-form-field class="full-width">
         <input matInput placeholder="Repository Trunk Url" formControlName="trunkUrl" #trunkUrl />
       </mat-form-field>
 
-      <mat-divider></mat-divider>
-      <br /><br />
-      <button mat-raised-button color="accent" routerLink="/project-list">Back</button>&nbsp;
-      <button type="submit"
-              mat-raised-button color="primary"
-              (click)="editProject(name.value, trunkUrl.value)"
-              [disabled]="editForm.pristine || editForm.invalid">Save</button>
+      <div class="container">
+        <div cdkDropList class="list" (cdkDropListDropped)="drop($event)">
+          <div class="list-item" *ngFor="let step of steps" cdkDrag>
+            <app-step-form [step]="step" (valueChange)="onStepValueChange()"></app-step-form>
+          </div>
+        </div>
+      </div>
+
+      <button mat-fab color="primary" id="add-button" matTooltip="Add Step" (click)="appendNewStep()"><i class="material-icons">add</i></button>
+
+      <mat-card-actions>
+        <button mat-raised-button color="accent" routerLink="/project-list">Back</button>&nbsp;
+        <button type="submit"
+                mat-raised-button color="primary"
+                (click)="editProject(name.value, trunkUrl.value, steps)"
+                [disabled]="productForm.pristine || productForm.invalid">Save</button>
+      </mat-card-actions>
+
     </form>
-  </mat-card>
-</div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  form: {{ productForm }}
+</mat-card>
