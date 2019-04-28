@@ -1,5 +1,5 @@
 export interface IProject {
-  id: String;
-  name: String;
-  trunkUrl: String;
+  id: string;
+  name: string;
+  trunkUrl: string;
 }

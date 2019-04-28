@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatToolbarModule, MatFormFieldModule,
@@ -13,10 +13,6 @@ import {
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { ListComponent } from './components/list/list.component';
-import { CreateComponent } from './components/create/create.component';
-import { EditComponent } from './components/edit/edit.component';
 
 import { UsersService } from './services/users.service';
 import { AuthGuard } from './guards/auth.guard';
@@ -37,9 +33,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'list', component: ListComponent, canActivate: [AuthGuard] },
-  { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
-  { path: 'edit/:id', component: EditComponent, canActivate: [AuthGuard] },
   { path: 'project-list', component: ProjectListComponent, canActivate: [AuthGuard] },
   { path: 'project-create', component: ProjectCreateComponent, canActivate: [AuthGuard] },
   { path: 'project-edit/:id', component: ProjectEditComponent, canActivate: [AuthGuard] }
@@ -48,9 +41,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
-    CreateComponent,
-    EditComponent,
     NavbarComponent,
     LoginComponent,
     RegisterComponent,

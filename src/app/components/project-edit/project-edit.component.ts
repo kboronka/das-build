@@ -12,7 +12,7 @@ import { IProject } from '../../interfaces/project.model';
   styleUrls: ['./project-edit.component.css']
 })
 export class ProjectEditComponent implements OnInit {
-  id: String;
+  id: string;
   project: any = {};
   editForm: FormGroup;
 
@@ -37,7 +37,7 @@ export class ProjectEditComponent implements OnInit {
 
         this.editForm.get('name').setValue(this.project.name);
         this.editForm.get('trunkUrl').setValue(this.project.trunkUrl);
-      })
+      });
     }));
   }
 

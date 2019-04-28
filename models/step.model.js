@@ -3,9 +3,7 @@ import { Test } from 'tslint';
 const Schema = mongoose.Schema;
 
 export const StepSchema = new Schema({
-  description: {
-    type: String
-  },
+  description: String,
   command: {
     type: String,
     required: true

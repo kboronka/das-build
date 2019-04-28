@@ -7,8 +7,8 @@ import { MatSnackBar } from '@angular/material';
 import { UsersService } from '../../services/users.service';
 
 interface UserPostResponse {
-  success: boolean,
-  msg: string
+  success: boolean;
+  msg: string;
 }
 
 @Component({
@@ -38,11 +38,10 @@ export class RegisterComponent implements OnInit {
   }
 
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
-    let pass = group.controls.password.value;
-    let confirmPass = group.controls.confirmPassword.value;
+    const pass = group.controls.password.value;
+    const confirmPass = group.controls.confirmPassword.value;
 
-    return pass === confirmPass ? null : { notSame: true }
-    return { notSame: true };
+    return pass === confirmPass ? null : { notSame: true };
   }
 
   onRegisterUserClick(name, username, email, password, confirmPassword) {
