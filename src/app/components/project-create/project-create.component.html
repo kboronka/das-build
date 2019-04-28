@@ -1,40 +1,27 @@
-<div>
+<div class="form">
   <br />
-  <mat-card>
+  <mat-card class="form-card">
     <section class="mat-typography">
-      <h3>Create a New Issue</h3>
+      <h3>Create a New Project</h3>
     </section>
     <mat-divider></mat-divider>
     <br />
-    <form [formGroup]="createForm" class="create-form">
+    <form [formGroup]="createForm" class="create-project-form">
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Issue Title" formControlName="title" #title />
+        <input matInput placeholder="Project Name" formControlName="name" #name />
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Assignee" formControlName="responsible" #responsible />
-      </mat-form-field>
-
-      <mat-form-field class="field-full-width">
-        <textarea matInput placeholder="Description" formControlName="description" #description></textarea>
-      </mat-form-field>
-
-      <mat-form-field class="field-full-width">
-        <mat-select placeholder="Severity" formControlName="severity" #severity>
-          <mat-option value="Low">Low</mat-option>
-          <mat-option value="Medium">Medium</mat-option>
-          <mat-option value="High">High</mat-option>
-        </mat-select>
+        <input matInput placeholder="Repository Trunk Url" formControlName="trunkUrl" #trunkUrl />
       </mat-form-field>
 
       <mat-divider></mat-divider>
       <br /><br />
-      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <button mat-raised-button color="accent" routerLink="/project-list">Back</button>&nbsp;
       <button type="submit"
               mat-raised-button color="primary"
-              (click)="addIssue(title.value, responsible.value, description.value, severity.value)"
+              (click)="addProject(name.value, trunkUrl.value)"
               [disabled]="createForm.pristine || createForm.invalid">Save</button>
-
     </form>
   </mat-card>
 </div>

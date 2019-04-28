@@ -38,9 +38,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'list', component: ListComponent, canActivate: [AuthGuard] },
   { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
   { path: 'edit/:id', component: EditComponent, canActivate: [AuthGuard] },
-  { path: 'list', component: ListComponent, canActivate: [AuthGuard] }
+  { path: 'project-list', component: ProjectListComponent, canActivate: [AuthGuard] },
+  { path: 'project-create', component: ProjectCreateComponent, canActivate: [AuthGuard] },
+  { path: 'project-edit/:id', component: ProjectEditComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

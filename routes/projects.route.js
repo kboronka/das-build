@@ -1,6 +1,13 @@
 import express from 'express';
 import passport from 'passport';
-import { Project, getProjects, upsertProject, deleteProject } from '../models/project.model';
+import {
+  Project,
+  getProjects,
+  getProjectById,
+  addProject,
+  updateProject,
+  deleteProject
+} from '../models/project.model';
 
 const router = express.Router();
 
@@ -15,8 +22,19 @@ router.get('/', (req, res) => {
   });
 });
 
+// Get project
+router.get('/:id', (req, res) => {
+  getProjectById(req.params.id, (err, projects) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(projects);
+    }
+  });
+});
+
 // Create new project
-router.post('/create',
+router.post('/add',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     let newProject = new Project({
@@ -25,8 +43,30 @@ router.post('/create',
       steps: []
     });
 
-    upsertProject(newProject, (err, project) => {
+    addProject(newProject, (err, project) => {
       if (err) {
+        console.log(err);
+        res.json({ success: false, msg: err });
+      } else {
+        res.json({ success: true, msg: 'project registered' });
+      }
+    });
+  }
+);
+
+// Update project
+router.post('/update/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    let newProject = new Project({
+      name: req.body.name,
+      trunkUrl: req.body.trunkUrl,
+      steps: req.body.steps
+    });
+
+    updateProject(req.params.id, newProject, (err, project) => {
+      if (err) {
+        console.log(err);
         res.json({ success: false, msg: err });
       } else {
         res.json({ success: true, msg: 'project registered' });
@@ -36,12 +76,16 @@ router.post('/create',
 );
 
 // Profile
-router.get('/:id/delete',
+router.get('/delete/:id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-
-
-    res.json({ user: req.user });
+    deleteProject(req.params.id, (err, success) => {
+      if (err) {
+        res.json({ success: false, msg: err });
+      } else {
+        res.json({ success: true, msg: 'project deleted' });
+      }
+    });
   }
 );
 

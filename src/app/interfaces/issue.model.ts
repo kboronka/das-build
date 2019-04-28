@@ -1,4 +1,4 @@
-export interface Issue {
+export interface IIssue {
   id: String;
   title: String;
   responsible: String;
