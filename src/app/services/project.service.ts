@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { IProject } from '../interfaces/project.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,14 @@ export class ProjectService {
     const header = new HttpHeaders()
       .append('Authorization', localStorage.getItem('id_token'));
 
-    return this.http.get(`projects`, { headers: header });
+    return this.http.get<[IProject]>(`projects`, { headers: header });
   }
 
   getProjectById(id) {
     const header = new HttpHeaders()
       .append('Authorization', localStorage.getItem('id_token'));
 
-    return this.http.get(`projects/${id}`, { headers: header });
+    return this.http.get<IProject>(`projects/${id}`, { headers: header });
   }
 
   addProject(name, trunkUrl) {

@@ -26,6 +26,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { ProjectCreateComponent } from './components/project-create/project-create.component';
 import { ProjectEditComponent } from './components/project-edit/project-edit.component';
+import { ProjectComponent } from './components/project/project.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'project-list', component: ProjectListComponent, canActivate: [AuthGuard] },
   { path: 'project-create', component: ProjectCreateComponent, canActivate: [AuthGuard] },
-  { path: 'project-edit/:id', component: ProjectEditComponent, canActivate: [AuthGuard] }
+  { path: 'project-edit/:id', component: ProjectEditComponent, canActivate: [AuthGuard] },
+  { path: 'project/:id', component: ProjectComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -49,7 +51,8 @@ const routes: Routes = [
     ProfileComponent,
     ProjectListComponent,
     ProjectCreateComponent,
-    ProjectEditComponent
+    ProjectEditComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
