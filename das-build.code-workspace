@@ -23,9 +23,10 @@
       "attr-lowercase": false
     },
     "cSpell.words": [
+      "dbname",
+      "htmlhint",
       "jira",
-      "upsert",
-      "htmlhint"
+      "upsert"
     ]
   }
 }

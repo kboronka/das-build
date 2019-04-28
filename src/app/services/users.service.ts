@@ -30,7 +30,7 @@ export class UsersService {
       email,
       password,
       admin: false
-    }
+    };
 
     return this.http.post(`users/register`, user);
   }
@@ -39,7 +39,7 @@ export class UsersService {
     const user = {
       username,
       password
-    }
+    };
 
     this.http.post(`users/authenticate`, user)
       .subscribe((data: AuthResponse) => {
@@ -56,7 +56,7 @@ export class UsersService {
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
-  };
+  }
 
   logout() {
     this.authToken = null;

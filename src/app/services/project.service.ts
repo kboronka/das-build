@@ -9,14 +9,14 @@ export class ProjectService {
   constructor(private http: HttpClient) { }
 
   getProjects() {
-    let header = new HttpHeaders()
+    const header = new HttpHeaders()
       .append('Authorization', localStorage.getItem('id_token'));
 
     return this.http.get(`projects`, { headers: header });
   }
 
   getProjectById(id) {
-    let header = new HttpHeaders()
+    const header = new HttpHeaders()
       .append('Authorization', localStorage.getItem('id_token'));
 
     return this.http.get(`projects/${id}`, { headers: header });
@@ -26,9 +26,9 @@ export class ProjectService {
     const project = {
       name,
       trunkUrl
-    }
+    };
 
-    let header = new HttpHeaders()
+    const header = new HttpHeaders()
       .append('Authorization', localStorage.getItem('id_token'));
 
     return this.http.post(`projects/add`, project, { headers: header });
@@ -47,7 +47,7 @@ export class ProjectService {
   }
 
   deleteProject(id) {
-    let header = new HttpHeaders()
+    const header = new HttpHeaders()
       .append('Authorization', localStorage.getItem('id_token'));
 
     return this.http.get(`projects/delete/${id}`, { headers: header });
