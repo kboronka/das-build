@@ -35,7 +35,6 @@ router.post('/add', (req, res) => {
 });
 
 router.post('/update/:id', (req, res) => {
-  console.log(req.params.id);
   Issue.findById(req.params.id, (err, issue) => {
     if (!issue || err) {
       res.status(400).send('issue not found');

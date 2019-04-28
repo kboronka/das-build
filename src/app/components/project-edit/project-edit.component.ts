@@ -31,7 +31,6 @@ export class ProjectEditComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params => {
-      console.log("params.id", params.id);
       this.id = params.id;
       this.projectService.getProjectById(this.id).subscribe(res => {
         this.project = res;
@@ -43,7 +42,6 @@ export class ProjectEditComponent implements OnInit {
   }
 
   editProject(name, trunkUrl) {
-    console.log("this.id", this.id);
     this.projectService.editProject(this.id, name, trunkUrl).subscribe(() => {
       this.router.navigate(['/project-list']);
     });

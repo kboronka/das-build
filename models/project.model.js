@@ -26,7 +26,6 @@ export function getProjectById(id, callback) {
 }
 
 export function addProject(project, callback) {
-  console.log("new", project);
   Project.create(project, callback);
 }
 
