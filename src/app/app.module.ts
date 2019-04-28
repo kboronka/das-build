@@ -18,7 +18,6 @@ import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 
-import { IssueService } from './services/issue.service';
 import { UsersService } from './services/users.service';
 import { AuthGuard } from './guards/auth.guard';
 
@@ -81,7 +80,7 @@ const routes: Routes = [
     MatListModule,
     ReactiveFormsModule
   ],
-  providers: [IssueService, UsersService, AuthGuard],
+  providers: [UsersService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

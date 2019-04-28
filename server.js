@@ -6,7 +6,6 @@ import passport from 'passport';
 import mongoose from 'mongoose';
 import createError from 'http-errors';
 
-import issuesRouter from './routes/issues.route';
 import projectsRouter from './routes/projects.route';
 import usersRouter from './routes/users.route';
 import config from './config/config';
@@ -32,7 +31,6 @@ connection.once('error', (err) => {
   console.log(`database error ${err}`);
 });
 
-app.use('/issues', issuesRouter);
 app.use('/projects', projectsRouter);
 app.use('/users', usersRouter);
 app.get('*', (req, res) => {
