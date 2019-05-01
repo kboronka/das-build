@@ -24,13 +24,21 @@
                            (valueChange)="onStepValueChange()"
                            (deleteStepClicked)="onDeleteStepClicked(i)"></app-step-form>
           </div>
+          <button id="add-button"
+                  mat-mini-fab
+                  class="add-step-button"
+                  color=""
+                  matTooltip="Add Step"
+                  (click)="appendNewStep()">
+            <i class="material-icons">add</i>
+          </button>
         </div>
       </div>
 
-      <button mat-fab color="primary" id="add-button" matTooltip="Add Step" (click)="appendNewStep()"><i class="material-icons">add</i></button>
+
 
       <mat-card-actions>
-        <button mat-raised-button color="accent" routerLink="/project-list">Back</button>&nbsp;
+        <button mat-raised-button color="warn" routerLink="/project-list">Back</button>&nbsp;
         <button type="submit"
                 mat-raised-button color="primary"
                 (click)="editProject(name.value, trunkUrl.value, slackWebhook.value, steps)"

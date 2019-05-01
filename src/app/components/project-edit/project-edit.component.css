@@ -26,6 +26,12 @@
   width: 136px;
 }
 
+.add-step-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  float: right;
+}
 
 .container {
   width: 100%;
