@@ -36,10 +36,11 @@ export class ProjectService {
     return this.http.post(`projects/add`, project, { headers: header });
   }
 
-  editProject(id, name, trunkUrl, steps: [IStep]) {
+  editProject(id, name, trunkUrl, slackWebhook, steps: [IStep]) {
     const project = {
       name,
       trunkUrl,
+      slackWebhook,
       steps
     };
 

@@ -13,6 +13,10 @@
         <input matInput placeholder="Repository Trunk Url" formControlName="trunkUrl" #trunkUrl />
       </mat-form-field>
 
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Slack Webhook" formControlName="slackWebhook" #slackWebhook />
+      </mat-form-field>
+
       <div class="container">
         <div cdkDropList class="list" (cdkDropListDropped)="drop($event)">
           <div class="list-item" *ngFor="let step of steps" cdkDrag>
@@ -27,7 +31,7 @@
         <button mat-raised-button color="accent" routerLink="/project-list">Back</button>&nbsp;
         <button type="submit"
                 mat-raised-button color="primary"
-                (click)="editProject(name.value, trunkUrl.value, steps)"
+                (click)="editProject(name.value, trunkUrl.value, slackWebhook.value, steps)"
                 [disabled]="productForm.pristine || productForm.invalid">Save</button>
       </mat-card-actions>
 

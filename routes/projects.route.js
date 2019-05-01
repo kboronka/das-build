@@ -61,6 +61,7 @@ router.post('/update/:id',
     let newProject = new Project({
       name: req.body.name,
       trunkUrl: req.body.trunkUrl,
+      slackWebhook: req.body.slackWebhook,
       steps: req.body.steps
     });
 

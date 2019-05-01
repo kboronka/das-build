@@ -12,6 +12,7 @@ let ProjectSchema = new Schema({
     type: String,
     required: true
   },
+  slackWebhook: String,
   steps: [StepSchema]
 });
 

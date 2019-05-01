@@ -19,6 +19,7 @@ export class ProjectEditComponent implements OnInit {
   productForm: FormGroup;
   name: string;
   trunkUrl: string;
+  slackWebhook: string;
   steps: [IStep];
 
   constructor(
@@ -30,7 +31,8 @@ export class ProjectEditComponent implements OnInit {
   ) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
-      trunkUrl: ['', Validators.required]
+      trunkUrl: ['', Validators.required],
+      slackWebhook: ''
     });
   }
 
@@ -41,9 +43,11 @@ export class ProjectEditComponent implements OnInit {
         this.steps = res.steps;
         this.name = res.name;
         this.trunkUrl = res.trunkUrl;
+        this.slackWebhook = res.slackWebhook;
 
         this.productForm.get('name').setValue(this.name);
         this.productForm.get('trunkUrl').setValue(this.trunkUrl);
+        this.productForm.get('slackWebhook').setValue(this.slackWebhook);
       });
     }));
   }
@@ -53,8 +57,8 @@ export class ProjectEditComponent implements OnInit {
     this.productForm.markAsDirty();
   }
 
-  editProject(name, trunkUrl, steps) {
-    this.projectService.editProject(this.id, name, trunkUrl, steps).subscribe(() => {
+  editProject(name, trunkUrl, slackWebhook, steps) {
+    this.projectService.editProject(this.id, name, trunkUrl, slackWebhook, steps).subscribe(() => {
       this.router.navigate(['/project-list']);
     });
   }
@@ -75,4 +79,7 @@ export class ProjectEditComponent implements OnInit {
     this.productForm.markAsDirty();
   }
 
+  onStepDeleted() {
+    this.productForm.markAsDirty();
+  }
 }
