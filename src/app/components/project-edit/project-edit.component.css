@@ -55,6 +55,10 @@
   font-size: 14px;
 }
 
+.list-item:nth-child(even) {
+  background-color: rgba(242, 242, 242, 0.5)
+}
+
 .list-item:last-child {
   border: none;
 }
