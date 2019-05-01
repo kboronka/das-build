@@ -1,8 +1,9 @@
 <div>
   <form [formGroup]="stepForm" class="my-form">
-    <mat-form-field class="full-width">
+    <mat-form-field>
       <input matInput placeholder="description" formControlName="description" #description />
     </mat-form-field>
+    <button class="delete-button" mat-mini-fab color="warn" id="add-button" matTooltip="Add Step" (click)="deleteStep()"><i class="material-icons">delete</i></button>
     <mat-form-field class="full-width">
       <input matInput placeholder="command" formControlName="command" #command />
     </mat-form-field>

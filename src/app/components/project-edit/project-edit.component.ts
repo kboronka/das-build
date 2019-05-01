@@ -58,9 +58,10 @@ export class ProjectEditComponent implements OnInit {
   }
 
   editProject(name, trunkUrl, slackWebhook, steps) {
-    this.projectService.editProject(this.id, name, trunkUrl, slackWebhook, steps).subscribe(() => {
-      this.router.navigate(['/project-list']);
-    });
+    this.projectService.editProject(this.id, name, trunkUrl, slackWebhook, steps)
+      .subscribe(() => {
+        this.router.navigate(['/project-list']);
+      });
   }
 
   appendNewStep() {
@@ -79,7 +80,8 @@ export class ProjectEditComponent implements OnInit {
     this.productForm.markAsDirty();
   }
 
-  onStepDeleted() {
+  onDeleteStepClicked(i) {
+    this.steps.splice(i, 1);
     this.productForm.markAsDirty();
   }
 }

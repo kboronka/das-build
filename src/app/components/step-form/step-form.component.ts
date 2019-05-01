@@ -10,6 +10,7 @@ import { IStep } from 'src/app/interfaces/step.interface';
 export class StepFormComponent implements OnInit {
   @Input() step: IStep;
   @Output() valueChange = new EventEmitter();
+  @Output() deleteStepClicked = new EventEmitter();
   stepForm: FormGroup;
 
   constructor(
@@ -58,4 +59,7 @@ export class StepFormComponent implements OnInit {
     );
   }
 
+  deleteStep() {
+    this.deleteStepClicked.emit(null);
+  }
 }
