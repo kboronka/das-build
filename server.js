@@ -8,6 +8,7 @@ import createError from 'http-errors';
 
 import projectsRouter from './routes/projects.route';
 import usersRouter from './routes/users.route';
+import agentsRouter from './routes/agents.route';
 import config from './config/config';
 
 const app = express();
@@ -33,6 +34,7 @@ connection.once('error', (err) => {
 
 app.use('/projects', projectsRouter);
 app.use('/users', usersRouter);
+app.use('/agents', agentsRouter);
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
