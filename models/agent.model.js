@@ -11,7 +11,14 @@ let AgentSchema = new Schema({
     type: String,
     required: true
   },
-  port: Number,
+  type: {
+    type: String,
+    required: true
+  },
+  port: {
+    type: Number,
+    required: true
+  },
   token: String,
   sandbox: String
 });
