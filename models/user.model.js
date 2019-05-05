@@ -20,7 +20,8 @@ let UserSchema = new Schema({
     required: true
   },
   admin: {
-    type: String,
+    type: Boolean,
+    required: true,
     default: false
   }
 });
