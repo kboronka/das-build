@@ -33,8 +33,13 @@ export function getAgentById(id, callback) {
   Agent.findById(id, callback);
 }
 
-export function addAgent(Agent, callback) {
-  Agent.create(Agent, callback);
+export function registerAgent(agent, callback) {
+  var query = { name: agent.name };
+  Agent.findOne(query, (res, err) => {
+    if (!res) {
+      Agent.create(Agent, callback);
+    }
+  });
 }
 
 export function updateAgent(id, Agent, callback) {

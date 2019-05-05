@@ -4,7 +4,7 @@ import {
   Agent,
   getAgents,
   getAgentById,
-  addAgent,
+  registerAgent,
   updateAgent,
   deleteAgent
 } from '../models/agent.model';
@@ -34,16 +34,18 @@ router.get('/:id', (req, res) => {
 });
 
 // Create new project
-router.post('/add',
+router.post('/register',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    let newAgent = new Agent({
+    let agent = new Agent({
       name: req.body.name,
-      trunkUrl: req.body.trunkUrl,
-      steps: []
+      host: req.body.host,
+      type: req.body.type,
+      port: req.body.port,
+      sandbox: req.body.sandbox
     });
 
-    addAgent(newAgent, (err, project) => {
+    registerAgent(agent, (err, project) => {
       if (err) {
         console.log(err);
         res.json({ success: false, msg: err });
@@ -58,14 +60,15 @@ router.post('/add',
 router.post('/update/:id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    let newAgent = new Agent({
+    let agent = new Agent({
       name: req.body.name,
-      trunkUrl: req.body.trunkUrl,
-      slackWebhook: req.body.slackWebhook,
-      steps: req.body.steps
+      host: req.body.host,
+      type: req.body.type,
+      port: req.body.port,
+      sandbox: req.body.sandbox
     });
 
-    updateAgent(req.params.id, newAgent, (err, project) => {
+    updateAgent(req.params.id, agent, (err, project) => {
       if (err) {
         console.log(err);
         res.json({ success: false, msg: err });
