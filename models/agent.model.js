@@ -33,19 +33,25 @@ export function registerAgent(agent, callback) {
     if (err) {
       return callback(err, null);
     } else if (!res) {
-      Agent.create(agent, callback);
+      Agent.create(agent, (err, res) => {
+        return callback(err, res);
+      });
     } else {
       agent._id = new ObjectId(res._id);
       var query = { _id: agent._id };
-      Agent.update(query, agent, callback);
+      Agent.update(query, agent, (err, res) => {
+        return callback(err, agent);
+      });
     }
   });
 }
 
-export function updateAgent(id, Agent, callback) {
-  Agent._id = new ObjectId(id);
-  var query = { _id: Agent._id };
-  Agent.updateOne(query, Agent, callback);
+export function updateAgent(id, agent, callback) {
+  agent._id = new ObjectId(id);
+  var query = { _id: agent._id };
+  Agent.updateOne(query, agent, (err, res) => {
+    return callback(err, agent);
+  });
 }
 
 export function deleteAgent(id, callback) {

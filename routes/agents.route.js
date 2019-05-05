@@ -50,6 +50,7 @@ router.post('/register',
         res.status(400);
         res.json({ success: false, msg: err });
       } else {
+        res.status(201);
         res.json({ success: true, agent });
       }
     });
