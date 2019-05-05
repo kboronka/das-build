@@ -11,6 +11,10 @@ let AgentSchema = new Schema({
     type: String,
     required: true
   },
+  ip: {
+    type: String,
+    required: true
+  },
   port: {
     type: Number,
     required: true
@@ -39,7 +43,7 @@ export function registerAgent(agent, callback) {
     } else {
       agent._id = new ObjectId(res._id);
       var query = { _id: agent._id };
-      Agent.update(query, agent, (err, res) => {
+      Agent.updateOne(query, agent, (err, res) => {
         return callback(err, agent);
       });
     }

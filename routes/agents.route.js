@@ -42,7 +42,8 @@ router.post('/register',
     let agent = new Agent({
       name: req.body.name,
       type: req.body.type,
-      port: req.body.port
+      port: req.body.port,
+      ip: req.connection.remoteAddress
     });
 
     registerAgent(agent, (err, agent) => {
@@ -57,28 +58,8 @@ router.post('/register',
   }
 );
 
-// Update agent
-router.post('/update/:id',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    let agent = new Agent({
-      name: req.body.name,
-      type: req.body.type,
-      port: req.body.port
-    });
 
-    updateAgent(req.params.id, agent, (err, agent) => {
-      if (err) {
-        res.status(400);
-        res.json({ success: false, msg: err });
-      } else {
-        res.json({ success: true, agent: agent });
-      }
-    });
-  }
-);
-
-// Profile
+// Delete agent
 router.get('/delete/:id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
