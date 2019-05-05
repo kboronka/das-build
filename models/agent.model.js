@@ -33,7 +33,6 @@ export function registerAgent(agent, callback) {
     if (err) {
       return callback(err, null);
     } else if (!res) {
-      console.log(agent);
       Agent.create(agent, callback);
     } else {
       agent._id = new ObjectId(res._id);

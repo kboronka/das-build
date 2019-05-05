@@ -18,6 +18,7 @@ router.post('/register', (req, res) => {
 
   User.addUser(newUser, (err, user) => {
     if (err) {
+      res.status(400);
       res.json({ success: false, msg: err });
     } else {
       res.json({ success: true, msg: 'user registered' });
@@ -33,6 +34,7 @@ router.post('/authenticate', (req, res) => {
   User.getUserByUsername(username, (err, user) => {
     if (err) throw err;
     if (!user) {
+      res.status(400);
       return res.json({ success: false, msg: 'user not found' });
     }
 
@@ -55,6 +57,7 @@ router.post('/authenticate', (req, res) => {
           }
         });
       } else {
+        res.status(400);
         res.json({ success: false, msg: 'wrong password' });
       }
     });

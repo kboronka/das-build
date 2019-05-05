@@ -15,7 +15,8 @@ const router = express.Router();
 router.get('/', (req, res) => {
   getAgents((err, agents) => {
     if (err) {
-      console.log(err);
+      res.status(400);
+      res.json(err);
     } else {
       res.json(agents);
     }
@@ -26,7 +27,8 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   getAgentById(req.params.id, (err, agent) => {
     if (err) {
-      console.log(err);
+      res.status(400);
+      res.json(err);
     } else {
       res.json(agent);
     }
@@ -45,7 +47,7 @@ router.post('/register',
 
     registerAgent(agent, (err, agent) => {
       if (err) {
-        console.log(err);
+        res.status(400);
         res.json({ success: false, msg: err });
       } else {
         res.json({ success: true, agent });
@@ -66,7 +68,7 @@ router.post('/update/:id',
 
     updateAgent(req.params.id, agent, (err, agent) => {
       if (err) {
-        console.log(err);
+        res.status(400);
         res.json({ success: false, msg: err });
       } else {
         res.json({ success: true, agent: agent });
@@ -81,6 +83,7 @@ router.get('/delete/:id',
   (req, res) => {
     deleteAgent(req.params.id, (err, success) => {
       if (err) {
+        res.status(400);
         res.json({ success: false, msg: err });
       } else {
         res.json({ success: true, msg: 'agent deleted' });

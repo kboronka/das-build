@@ -15,7 +15,8 @@ const router = express.Router();
 router.get('/', (req, res) => {
   getProjects((err, projects) => {
     if (err) {
-      console.log(err);
+      res.status(400);
+      res.json(err);
     } else {
       res.json(projects);
     }
@@ -26,7 +27,8 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   getProjectById(req.params.id, (err, projects) => {
     if (err) {
-      console.log(err);
+      res.status(400);
+      res.json(err);
     } else {
       res.json(projects);
     }
@@ -45,7 +47,7 @@ router.post('/add',
 
     addProject(newProject, (err, project) => {
       if (err) {
-        console.log(err);
+        res.status(400);
         res.json({ success: false, msg: err });
       } else {
         res.json({ success: true, msg: 'project registered' });
@@ -67,7 +69,7 @@ router.post('/update/:id',
 
     updateProject(req.params.id, newProject, (err, project) => {
       if (err) {
-        console.log(err);
+        res.status(400);
         res.json({ success: false, msg: err });
       } else {
         res.json({ success: true, msg: 'project registered' });
@@ -82,6 +84,7 @@ router.get('/delete/:id',
   (req, res) => {
     deleteProject(req.params.id, (err, success) => {
       if (err) {
+        res.status(400);
         res.json({ success: false, msg: err });
       } else {
         res.json({ success: true, msg: 'project deleted' });
