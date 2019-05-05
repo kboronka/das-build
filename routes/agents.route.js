@@ -5,7 +5,6 @@ import {
   getAgents,
   getAgentById,
   registerAgent,
-  updateAgent,
   deleteAgent
 } from '../models/agent.model';
 

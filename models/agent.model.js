@@ -50,14 +50,6 @@ export function registerAgent(agent, callback) {
   });
 }
 
-export function updateAgent(id, agent, callback) {
-  agent._id = new ObjectId(id);
-  var query = { _id: agent._id };
-  Agent.updateOne(query, agent, (err, res) => {
-    return callback(err, agent);
-  });
-}
-
 export function deleteAgent(id, callback) {
   var query = { _id: new ObjectId(id) };
   Agent.deleteOne(query, callback);
