@@ -7,10 +7,6 @@ let AgentSchema = new Schema({
     type: String,
     required: true
   },
-  host: {
-    type: String,
-    required: true
-  },
   type: {
     type: String,
     required: true
@@ -18,9 +14,7 @@ let AgentSchema = new Schema({
   port: {
     type: Number,
     required: true
-  },
-  token: String,
-  sandbox: String
+  }
 });
 
 export const Agent = mongoose.model('Agent', AgentSchema);
@@ -35,9 +29,16 @@ export function getAgentById(id, callback) {
 
 export function registerAgent(agent, callback) {
   var query = { name: agent.name };
-  Agent.findOne(query, (res, err) => {
-    if (!res) {
-      Agent.create(Agent, callback);
+  Agent.findOne(query, (err, res) => {
+    if (err) {
+      return callback(err, null);
+    } else if (!res) {
+      console.log(agent);
+      Agent.create(agent, callback);
+    } else {
+      agent._id = new ObjectId(res._id);
+      var query = { _id: agent._id };
+      Agent.update(query, agent, callback);
     }
   });
 }

@@ -11,69 +11,65 @@ import {
 
 const router = express.Router();
 
-// Get list of projects
+// Get list of agents
 router.get('/', (req, res) => {
-  getAgents((err, projects) => {
+  getAgents((err, agents) => {
     if (err) {
       console.log(err);
     } else {
-      res.json(projects);
+      res.json(agents);
     }
   });
 });
 
-// Get project
+// Get agent
 router.get('/:id', (req, res) => {
-  getAgentById(req.params.id, (err, projects) => {
+  getAgentById(req.params.id, (err, agent) => {
     if (err) {
       console.log(err);
     } else {
-      res.json(projects);
+      res.json(agent);
     }
   });
 });
 
-// Create new project
+// register new agent or update existing agent
 router.post('/register',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     let agent = new Agent({
       name: req.body.name,
-      host: req.body.host,
       type: req.body.type,
-      port: req.body.port,
-      sandbox: req.body.sandbox
+      port: req.body.port
     });
 
-    registerAgent(agent, (err, project) => {
+    registerAgent(agent, (err, agent) => {
       if (err) {
         console.log(err);
         res.json({ success: false, msg: err });
       } else {
-        res.json({ success: true, msg: 'project registered' });
+        res.json({ success: true, agent });
       }
     });
   }
 );
 
-// Update project
+// Update agent
 router.post('/update/:id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     let agent = new Agent({
       name: req.body.name,
-      host: req.body.host,
       type: req.body.type,
-      port: req.body.port,
-      sandbox: req.body.sandbox
+      port: req.body.port
     });
 
-    updateAgent(req.params.id, agent, (err, project) => {
+    updateAgent(req.params.id, agent, (err, agent) => {
       if (err) {
         console.log(err);
         res.json({ success: false, msg: err });
       } else {
-        res.json({ success: true, msg: 'project registered' });
+        res.json({ success: true, agent: agent });
       }
     });
   }
@@ -87,7 +83,7 @@ router.get('/delete/:id',
       if (err) {
         res.json({ success: false, msg: err });
       } else {
-        res.json({ success: true, msg: 'project deleted' });
+        res.json({ success: true, msg: 'agent deleted' });
       }
     });
   }
