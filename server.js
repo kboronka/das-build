@@ -50,4 +50,4 @@ app.use(function(err, req, res, next) {
   res.status(statusCode).json({ code: statusCode, message: err.message });
 });
 
-app.listen(config.port, () => console.log(`listening on port ${config.port}`));
+app.listen(config.port, '0.0.0.0', () => console.log(`listening on port ${config.port}`));
