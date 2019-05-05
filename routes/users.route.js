@@ -69,8 +69,11 @@ router.get('/profile',
   }
 );
 
-router.get('/validate', (req, res) => {
-  res.send('validate');
-});
+router.post('/validate',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.json({ agent: req.user });
+  }
+);
 
 module.exports = router;
