@@ -39,6 +39,11 @@ router.get('/:id', (req, res) => {
 router.post('/add',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+    if (!req.user.admin) {
+      res.status(401);
+      return res.json({ "message": "unauthorized - admin only" })
+    }
+
     let newProject = new Project({
       name: req.body.name,
       trunkUrl: req.body.trunkUrl,
@@ -60,6 +65,11 @@ router.post('/add',
 router.post('/update/:id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+    if (!req.user.admin) {
+      res.status(401);
+      return res.json({ "message": "unauthorized - admin only" })
+    }
+
     let newProject = new Project({
       name: req.body.name,
       trunkUrl: req.body.trunkUrl,
@@ -82,6 +92,11 @@ router.post('/update/:id',
 router.get('/delete/:id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+    if (!req.user.admin) {
+      res.status(401);
+      return res.json({ "message": "unauthorized - admin only" })
+    }
+
     deleteProject(req.params.id, (err, success) => {
       if (err) {
         res.status(400);
