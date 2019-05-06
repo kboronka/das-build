@@ -1,8 +1,19 @@
 <mat-toolbar class="mat-elevation-z6">
   <a class="das-build" mat-button [routerLink]=" ['/']">das-build </a>
+  <div *ngIf="userService.loggedIn()">
+    &nbsp;
+
+    <mat-form-field>
+      <mat-label>Branch</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let branch of branches" [value]="branch.repo">
+          {{ branch.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 
   <span class="fill-remaining-space"></span>
-
 
   <div *ngIf="userService.loggedIn()">
     <a id="dashboard-btn"

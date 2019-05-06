@@ -4,7 +4,7 @@ import {
   Branch,
   getBranches,
   getBranchById,
-  registerBranch,
+  addBranch,
   deleteBranch
 } from '../models/branch.model';
 
@@ -45,7 +45,7 @@ router.post('/add',
       approved: false
     });
 
-    registerBranch(branch, (err, branch) => {
+    addBranch(branch, (err, branch) => {
       if (err) {
         res.status(400);
         res.json({ success: false, msg: err });

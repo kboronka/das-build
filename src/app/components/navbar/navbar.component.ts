@@ -2,7 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
-import { UsersService, UserAuthInfo } from '../../services/users.service';
+import { UsersService } from '../../services/users.service';
+import { IBranch } from '../../interfaces/branch.model';
+import { BranchesService } from '../../services/branches.service';
+
+export interface Branch {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-navbar',
@@ -11,12 +18,17 @@ import { UsersService, UserAuthInfo } from '../../services/users.service';
 })
 export class NavbarComponent implements OnInit {
 
+  branches: IBranch[];
+
   constructor(
     private userService: UsersService,
+    private branchesService: BranchesService,
     private router: Router,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {
+    this.fetchBranches();
   }
 
   onLogoutClick() {
@@ -29,4 +41,11 @@ export class NavbarComponent implements OnInit {
     return false;
   }
 
+  fetchBranches() {
+    this.branchesService
+      .getBranches()
+      .subscribe((data: IBranch[]) => {
+        this.branches = data;
+      });
+  }
 }
