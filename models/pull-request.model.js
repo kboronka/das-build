@@ -18,7 +18,7 @@ let PullRequestSchema = new Schema({
   approved: Boolean
 });
 
-export const PullRequest = mongoose.model('PullRequests', PullRequestSchema);
+export const PullRequest = mongoose.model('PullRequest', PullRequestSchema);
 
 export function getPullRequests(callback) {
   PullRequest.find(callback);
