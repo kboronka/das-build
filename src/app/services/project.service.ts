@@ -11,9 +11,7 @@ export class ProjectService {
   constructor(private http: HttpClient) { }
 
   getProjects() {
-    const header = new HttpHeaders()
-      .append('Authorization', localStorage.getItem('id_token'));
-
+    const header = new HttpHeaders();
     return this.http.get<[IProject]>(`projects`, { headers: header });
   }
 
