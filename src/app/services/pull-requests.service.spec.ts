@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BranchesService } from './branches.service';
+import { PullRequestsService } from './pull-requests.service';
 
-describe('BranchesService', () => {
+describe('PullRequestsService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: BranchesService = TestBed.get(BranchesService);
+    const service: PullRequestsService = TestBed.get(PullRequestsService);
     expect(service).toBeTruthy();
   });
 });

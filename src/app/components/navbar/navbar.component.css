@@ -8,3 +8,9 @@
   font-family: 'Leckerli One', cursive;
   font-weight: 100;
 }
+
+.project-select {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}

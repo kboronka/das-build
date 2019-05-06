@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../../../models/user.model';
 
 export interface UserAuthInfo {
   name: string;
   username: string;
   email: string;
   admin: boolean;
+}
+
+export interface IProfileResponse {
+  user: User;
 }
 
 interface AuthResponse {

@@ -1,18 +1,18 @@
 import express from 'express';
 import passport from 'passport';
 import {
-  Branch,
-  getBranches,
-  getBranchById,
-  addBranch,
-  deleteBranch
-} from '../models/branch.model';
+  PullRequest,
+  getPullRequests,
+  getPullRequestById,
+  addPullRequest,
+  deletePullRequest
+} from '../models/pull-request.model';
 
 const router = express.Router();
 
 // get list of branches
 router.get('/', (req, res) => {
-  getBranches((err, branches) => {
+  getPullRequests((err, branches) => {
     if (err) {
       res.status(400);
       res.json(err);
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 
 // get a single branch
 router.get('/:id', (req, res) => {
-  getBranchById(req.params.id, (err, branch) => {
+  getPullRequestById(req.params.id, (err, branch) => {
     if (err) {
       res.status(400);
       res.json(err);
@@ -38,14 +38,14 @@ router.get('/:id', (req, res) => {
 router.post('/add',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    let branch = new Branch({
+    let branch = new PullRequest({
       name: req.body.name,
       repo: req.body.repo,
       author: req.body.author,
       approved: false
     });
 
-    addBranch(branch, (err, branch) => {
+    addPullRequest(branch, (err, branch) => {
       if (err) {
         res.status(400);
         res.json({ success: false, msg: err });
@@ -77,7 +77,7 @@ router.post('/approve/:id',
 router.get('/delete/:id',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    deleteBranch(req.params.id, (err, success) => {
+    deletePullRequest(req.params.id, (err, success) => {
       if (err) {
         res.status(400);
         res.json({ success: false, msg: err });

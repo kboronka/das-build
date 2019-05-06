@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
-import { UsersService } from '../../services/users.service';
-import { IBranch } from '../../interfaces/branch.model';
-import { BranchesService } from '../../services/branches.service';
+import { User } from '../../../../models/user.model';
+import { UsersService, IProfileResponse } from '../../services/users.service';
+import { IProject } from 'src/app/interfaces/project.model';
+import { ProjectService } from 'src/app/services/project.service';
 
 export interface Branch {
   value: string;
@@ -18,17 +19,19 @@ export interface Branch {
 })
 export class NavbarComponent implements OnInit {
 
-  branches: IBranch[];
+  projects: IProject[];
+  user: User;
 
   constructor(
     private userService: UsersService,
-    private branchesService: BranchesService,
+    private projectService: ProjectService,
     private router: Router,
     private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
-    this.fetchBranches();
+    this.fetchProjects();
+    this.fetchUser();
   }
 
   onLogoutClick() {
@@ -41,11 +44,20 @@ export class NavbarComponent implements OnInit {
     return false;
   }
 
-  fetchBranches() {
-    this.branchesService
-      .getBranches()
-      .subscribe((data: IBranch[]) => {
-        this.branches = data;
+  fetchProjects() {
+    this.projectService
+      .getProjects()
+      .subscribe((data: IProject[]) => {
+        this.projects = data;
+      });
+  }
+
+  fetchUser() {
+    this.userService.getProfile()
+      .subscribe((profile: IProfileResponse) => {
+        this.user = profile.user;
+      }, err => {
+        return false;
       });
   }
 }

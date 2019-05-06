@@ -4,10 +4,9 @@
     &nbsp;
 
     <mat-form-field>
-      <mat-label>Branch</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let branch of branches" [value]="branch.repo">
-          {{ branch.name }}
+      <mat-select class="project-select">
+        <mat-option *ngFor="let project of projects" [value]="project._id">
+          {{ project.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -19,7 +18,7 @@
     <a id="dashboard-btn"
        *ngIf="userService.loggedIn()"
        mat-button
-       [routerLink]="['/project-list']"
+       [routerLink]="['/dashboard']"
        routerLinkActive="mat-flat-button">
       Dashboard
     </a>
