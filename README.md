@@ -1,4 +1,5 @@
 # das-build
+inspired by Jeannie Huang's article http://jeanniehuangdesigns.com/adobe-build-queue-system
 
 ## dev tools
 - npm - [Node.JS](https://nodejs.org/en/)
