@@ -1,19 +1,33 @@
 <mat-tab-group>
-  <mat-tab label="Yours (1)">
+  <mat-tab label="Yours {{ requireAppoval && '(' + all.length.toString() + ')' }}">
+    <mat-card *ngFor="let pr of all">
+      <mat-card-content>
+        {{ pr.name }}
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Requires Approval {{ requireAppoval && '(' + requireAppoval.length.toString() + ')' }}">
+    <mat-card *ngFor="let pr of requireAppoval">
+      <mat-card-content>
+        {{ pr.name }}
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Ready to Queue">
     <mat-card>
       <mat-card-content>
         To Be completed
       </mat-card-content>
     </mat-card>
   </mat-tab>
-  <mat-tab label="Ready To Merge">
+  <mat-tab label="In Queue">
     <mat-card>
       <mat-card-content>
         To Be completed
       </mat-card-content>
     </mat-card>
   </mat-tab>
-  <mat-tab label="Requires Approval">
+  <mat-tab label="Passed">
     <mat-card>
       <mat-card-content>
         To Be completed

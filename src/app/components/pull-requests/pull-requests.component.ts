@@ -15,7 +15,13 @@ import { PullRequestsService } from '../../services/pull-requests.service';
 })
 export class PullRequestsComponent implements OnInit {
 
-  pullRequests: IPullRequest[];
+  all: IPullRequest[] = [];
+  requireAppoval: IPullRequest[];
+  reqdyToQueue: IPullRequest[];
+  inQueue: IPullRequest[];
+  passed: IPullRequest[];
+  failed: IPullRequest[];
+
   user: User;
 
   constructor(
@@ -33,7 +39,8 @@ export class PullRequestsComponent implements OnInit {
     this.pullRequestService
       .getPullRequestsByAuthor(author)
       .subscribe((data: IPullRequest[]) => {
-        this.pullRequests = data;
+        this.all = data;
+        this.requireAppoval = data.filter(pr => pr.approved == false);
       });
   }
 
