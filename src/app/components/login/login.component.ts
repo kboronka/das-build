@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           });
         } else {
           this.router.navigate(['/dashboard']);
-          this.userService.storeUserData(user, token);
+          this.userService.login(user, token);
           this.snackBar.open(`${user.name} is now logged in.`, 'OK', {
             duration: 3000
           });

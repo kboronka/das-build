@@ -26,7 +26,13 @@ export class UsersService {
   authToken: string;
   user: UserAuthInfo;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    var userLocalStorage = localStorage.getItem('user');
+    if (userLocalStorage) {
+      var user = JSON.parse(userLocalStorage);
+      this.user = user;
+    }
+  }
 
   registerUser(name: string, username: string, email: string, password: string) {
     const user = {
@@ -56,7 +62,7 @@ export class UsersService {
       });
   }
 
-  storeUserData(user: UserAuthInfo, token: string) {
+  login(user: UserAuthInfo, token: string) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
