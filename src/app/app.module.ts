@@ -8,7 +8,8 @@ import {
   MatInputModule, MatOptionModule, MatCardModule,
   MatSelectModule, MatIconModule, MatButtonModule,
   MatTableModule, MatDividerModule, MatSnackBarModule,
-  MatListModule, MatGridListModule, MatMenuModule
+  MatListModule, MatGridListModule, MatMenuModule,
+  MatTabsModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -77,6 +78,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatGridListModule,
     MatMenuModule,
+    MatTabsModule,
     DragDropModule
   ],
   providers: [UsersService, AuthGuard],
