@@ -15,7 +15,7 @@ import { PullRequestsService } from '../../services/pull-requests.service';
 })
 export class PullRequestsComponent implements OnInit {
 
-  all: IPullRequest[] = [];
+  all: IPullRequest[];
   requireAppoval: IPullRequest[];
   reqdyToQueue: IPullRequest[];
   inQueue: IPullRequest[];
@@ -40,7 +40,11 @@ export class PullRequestsComponent implements OnInit {
       .getPullRequestsByAuthor(author)
       .subscribe((data: IPullRequest[]) => {
         this.all = data;
-        this.requireAppoval = data.filter(pr => pr.approved == false);
+        this.requireAppoval = data.filter(pr => pr.state == 'Open');
+        this.reqdyToQueue = data.filter(pr => pr.state == 'Approved');
+        this.inQueue = data.filter(pr => pr.state == 'Queued');
+        this.passed = data.filter(pr => pr.state == 'Completed');
+        this.failed = data.filter(pr => pr.state == 'Failed');
       });
   }
 

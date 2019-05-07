@@ -1,6 +1,15 @@
 import mongoose from 'mongoose';
+
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
+
+export const States = {
+  RequiresAppoval: 'Open',
+  ReadyToQueue: 'Approved',
+  InQueue: 'Queued',
+  Failed: 'Failed',
+  Passed: 'Completed'
+}
 
 let PullRequestSchema = new Schema({
   name: {
@@ -15,7 +24,10 @@ let PullRequestSchema = new Schema({
     type: String,
     required: true
   },
-  approved: Boolean
+  state: {
+    type: String,
+    default: States.Open
+  }
 });
 
 export const PullRequest = mongoose.model('PullRequest', PullRequestSchema);

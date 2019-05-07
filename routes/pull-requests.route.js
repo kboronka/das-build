@@ -6,7 +6,8 @@ import {
   getPullRequestById,
   getPullRequestsByAuthor,
   addPullRequest,
-  deletePullRequest
+  deletePullRequest,
+  States
 } from '../models/pull-request.model';
 
 const router = express.Router();
@@ -55,7 +56,7 @@ router.post('/add',
       name: req.body.name,
       repo: req.body.repo,
       author: req.body.author,
-      approved: false
+      state: States.RequiresAppoval
     });
 
     addPullRequest(branch, (err, branch) => {

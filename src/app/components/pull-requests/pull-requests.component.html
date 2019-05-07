@@ -6,6 +6,7 @@
       </mat-card-content>
     </mat-card>
   </mat-tab>
+
   <mat-tab label="Requires Approval {{ requireAppoval && '(' + requireAppoval.length.toString() + ')' }}">
     <mat-card *ngFor="let pr of requireAppoval">
       <mat-card-content>
@@ -13,31 +14,35 @@
       </mat-card-content>
     </mat-card>
   </mat-tab>
-  <mat-tab label="Ready to Queue">
-    <mat-card>
+
+  <mat-tab label="Ready to Queue {{ reqdyToQueue && '(' + reqdyToQueue.length.toString() + ')' }}">
+    <mat-card *ngFor="let pr of reqdyToQueue">
       <mat-card-content>
-        To Be completed
+        {{ pr.name }}
       </mat-card-content>
     </mat-card>
   </mat-tab>
-  <mat-tab label="In Queue">
-    <mat-card>
+
+  <mat-tab label="In Queue {{ inQueue && '(' + inQueue.length.toString() + ')' }}">
+    <mat-card *ngFor="let pr of inQueue">
       <mat-card-content>
-        To Be completed
+        {{ pr.name }}
       </mat-card-content>
     </mat-card>
   </mat-tab>
-  <mat-tab label="Passed">
-    <mat-card>
+
+  <mat-tab label="Passed {{ passed && '(' + passed.length.toString() + ')' }}">
+    <mat-card *ngFor="let pr of passed">
       <mat-card-content>
-        To Be completed
+        {{ pr.name }}
       </mat-card-content>
     </mat-card>
   </mat-tab>
-  <mat-tab label="Failed">
-    <mat-card>
+
+  <mat-tab label="Failed {{ failed && '(' + failed.length.toString() + ')' }}">
+    <mat-card *ngFor="let pr of failed">
       <mat-card-content>
-        To Be completed
+        {{ pr.name }}
       </mat-card-content>
     </mat-card>
   </mat-tab>
