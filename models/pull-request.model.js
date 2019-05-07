@@ -28,6 +28,11 @@ export function getPullRequestById(id, callback) {
   PullRequest.findById(id, callback);
 }
 
+export function getPullRequestsByAuthor(author, callback) {
+  var query = { author: author };
+  PullRequest.find(query, callback);
+}
+
 export function addPullRequest(pullRequest, callback) {
   var query = { name: pullRequest.name };
   PullRequest.findOne(query, (err, res) => {

@@ -36,7 +36,7 @@ connection.once('error', (err) => {
 app.use('/projects', projectsRouter);
 app.use('/users', usersRouter);
 app.use('/agents', agentsRouter);
-app.use('/pull-requests', pullRequestsRouter);
+app.use('/pr', pullRequestsRouter);
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });

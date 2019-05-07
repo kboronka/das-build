@@ -13,7 +13,16 @@ export class PullRequestsService {
     const header = new HttpHeaders()
       .append('Authorization', localStorage.getItem('id_token'));
 
-    return this.http.get<[IPullRequest]>('pull-requests', { headers: header });
+    return this.http.get<[IPullRequest]>('pr', { headers: header });
+  }
+
+  getPullRequestsByAuthor(author: String) {
+    const header = new HttpHeaders()
+      .append('Authorization', localStorage.getItem('id_token'));
+
+    return this.http.get<[IPullRequest]>(
+      `pr/author/${author}`,
+      { headers: header });
   }
 }
 

@@ -4,6 +4,7 @@ import {
   PullRequest,
   getPullRequests,
   getPullRequestById,
+  getPullRequestsByAuthor,
   addPullRequest,
   deletePullRequest
 } from '../models/pull-request.model';
@@ -25,6 +26,18 @@ router.get('/', (req, res) => {
 // get a single branch
 router.get('/:id', (req, res) => {
   getPullRequestById(req.params.id, (err, branch) => {
+    if (err) {
+      res.status(400);
+      res.json(err);
+    } else {
+      res.json(branch);
+    }
+  });
+});
+
+// get a single branch
+router.get('/author/:author', (req, res) => {
+  getPullRequestsByAuthor(req.params.author, (err, branch) => {
     if (err) {
       res.status(400);
       res.json(err);

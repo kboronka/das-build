@@ -29,6 +29,7 @@ import { ProjectEditComponent } from './components/project-edit/project-edit.com
 import { ProjectComponent } from './components/project/project.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { StepFormComponent } from './components/step-form/step-form.component';
+import { PullRequestsComponent } from './components/pull-requests/pull-requests.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'project-list', component: ProjectListComponent, canActivate: [AuthGuard] },
+  { path: 'pull-requests', component: PullRequestsComponent, canActivate: [AuthGuard] },
   { path: 'project-create', component: ProjectCreateComponent, canActivate: [AuthGuard] },
   { path: 'project-edit/:id', component: ProjectEditComponent, canActivate: [AuthGuard] },
   { path: 'project/:id', component: ProjectComponent, canActivate: [AuthGuard] }
@@ -55,7 +57,8 @@ const routes: Routes = [
     ProjectCreateComponent,
     ProjectEditComponent,
     ProjectComponent,
-    StepFormComponent
+    StepFormComponent,
+    PullRequestsComponent
   ],
   imports: [
     BrowserModule,

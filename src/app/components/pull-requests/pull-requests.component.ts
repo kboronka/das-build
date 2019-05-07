@@ -7,12 +7,13 @@ import { UsersService, IProfileResponse } from '../../services/users.service';
 import { IPullRequest } from '../../interfaces/pull-request.model';
 import { PullRequestsService } from '../../services/pull-requests.service';
 
+
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-pull-requests',
+  templateUrl: './pull-requests.component.html',
+  styleUrls: ['./pull-requests.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class PullRequestsComponent implements OnInit {
 
   pullRequests: IPullRequest[];
   user: User;
@@ -25,13 +26,12 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.fetchPullRequests();
     this.fetchUser();
   }
 
-  fetchPullRequests() {
+  fetchPullRequests(author: String) {
     this.pullRequestService
-      .getPullRequests()
+      .getPullRequestsByAuthor(author)
       .subscribe((data: IPullRequest[]) => {
         this.pullRequests = data;
       });
@@ -41,9 +41,9 @@ export class ProfileComponent implements OnInit {
     this.userService.getProfile()
       .subscribe((profile: IProfileResponse) => {
         this.user = profile.user;
+        this.fetchPullRequests(this.user.username);
       }, err => {
         return false;
       });
   }
-
 }
