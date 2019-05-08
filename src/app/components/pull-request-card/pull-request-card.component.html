@@ -3,7 +3,7 @@
     <div class="card-left">
       <mat-card-header>
         <img mat-card-avatar src="/assets/default-avatar.png" alt="User Avatar">
-        <mat-card-title class="description">{{ pullRequest.description }} ({{ pullRequest.ticket }})</mat-card-title>
+        <mat-card-title class="description">{{ pullRequest.description }} <span *ngIf="pullRequest && pullRequest.ticket">(<a [href]="pullRequest.ticketUrl">{{ pullRequest.ticket }}</a>)</span></mat-card-title>
         <mat-card-subtitle class="author">opened by <b>{{ pullRequest.author }}</b> {{ pullRequest.created | timeAgo }}</mat-card-subtitle>
       </mat-card-header>
     </div>

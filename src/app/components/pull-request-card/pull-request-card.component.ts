@@ -17,5 +17,4 @@ export class PullRequestCardComponent implements OnInit {
   isNotReadyToQueue() {
     return this.pullRequest.state != 'Approved';
   }
-
 }

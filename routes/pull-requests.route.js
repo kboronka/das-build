@@ -55,12 +55,19 @@ router.post('/add',
     let branch = new PullRequest({
       name: req.body.name,
       description: req.body.description,
-      ticket: req.body.ticket,
       repo: req.body.repo,
       author: req.body.author,
       state: States.RequiresAppoval,
       created: req.body.created
     });
+
+    if (req.body.ticket) {
+      branch.ticket = req.body.ticket;
+    }
+
+    if (req.body.ticketUrl) {
+      branch.ticketUrl = req.body.ticketUrl;
+    }
 
     addPullRequest(branch, (err, branch) => {
       if (err) {
