@@ -19,11 +19,13 @@
                            [pullRequest]="pr"></app-pull-request-card>
   </mat-tab>
 
-  <mat-tab label="Passed {{ getTabCount(passed) }}">
+  <mat-tab label="Passed Tests {{ getTabCount(passed) }}">
     <app-pull-request-card *ngFor="let pr of passed"
                            [pullRequest]="pr"></app-pull-request-card>
   </mat-tab>
-  failed {{ getTabCount(failed) }}">
-  <app-pull-request-card *ngFor="let pr of failed"
-                         [pullRequest]="pr"></app-pull-request-card>
+  <mat-tab label="Failed Tests {{ getTabCount(failed) }}">
+    <app-pull-request-card *ngFor="let pr of failed"
+                           [pullRequest]="pr"></app-pull-request-card>
+  </mat-tab>
+
 </mat-tab-group>
