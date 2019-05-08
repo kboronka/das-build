@@ -5,7 +5,7 @@
         {{ pullRequest.description }} ({{ pullRequest.ticket }})
       </div>
       <div class="author">
-        opened by {{ pullRequest.author }}
+        opened by {{ pullRequest.author }} {{ pullRequest.created | timeAgo }}
       </div>
     </div>
   </mat-card-content>

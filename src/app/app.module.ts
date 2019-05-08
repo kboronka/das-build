@@ -12,6 +12,7 @@ import {
   MatTabsModule
 } from '@angular/material';
 
+import { TimeAgoPipe } from 'time-ago-pipe';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -58,7 +59,8 @@ const routes: Routes = [
     ProjectComponent,
     StepFormComponent,
     PullRequestsComponent,
-    PullRequestCardComponent
+    PullRequestCardComponent,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,
