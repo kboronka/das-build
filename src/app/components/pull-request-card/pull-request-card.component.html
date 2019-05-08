@@ -1,11 +1,16 @@
 <mat-card class="pull-request-card">
-  <mat-card-content>
+  <mat-card-header class="card-left">
+    <img mat-card-avatar src="/assets/default-avatar.png" alt="User Avatar">
+    <mat-card-title class="description">{{ pullRequest.description }} ({{ pullRequest.ticket }})</mat-card-title>
+    <mat-card-subtitle class="author">opened by <b>{{ pullRequest.author }}</b> {{ pullRequest.created | timeAgo }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="card-middle">
     <div class="info">
       <div class="description">
-        {{ pullRequest.description }} ({{ pullRequest.ticket }})
+
       </div>
-      <div class="author">
-        opened by <b>{{ pullRequest.author }}</b> {{ pullRequest.created | timeAgo }}
+      <div>
+
       </div>
     </div>
   </mat-card-content>
