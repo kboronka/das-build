@@ -35,6 +35,10 @@ let PullRequestSchema = new Schema({
   state: {
     type: String,
     default: States.Open
+  },
+  created: {
+    type: Date,
+    required: true
   }
 });
 

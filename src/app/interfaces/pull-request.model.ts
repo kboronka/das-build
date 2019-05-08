@@ -5,4 +5,5 @@ export interface IPullRequest {
   repo: string;
   author: string;
   state: string;
+  created: Date;
 }

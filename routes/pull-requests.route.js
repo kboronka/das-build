@@ -58,7 +58,8 @@ router.post('/add',
       ticket: req.body.ticket,
       repo: req.body.repo,
       author: req.body.author,
-      state: States.RequiresAppoval
+      state: States.RequiresAppoval,
+      created: req.body.created
     });
 
     addPullRequest(branch, (err, branch) => {
