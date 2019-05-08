@@ -1,4 +1,4 @@
-<mat-tab-group>
+<mat-tab-group class="pull-request-group">
   <mat-tab label="Yours {{ getTabCount(all) }}">
     <app-pull-request-card *ngFor="let pr of all"
                            [pullRequest]="pr"></app-pull-request-card>
@@ -27,5 +27,4 @@
     <app-pull-request-card *ngFor="let pr of failed"
                            [pullRequest]="pr"></app-pull-request-card>
   </mat-tab>
-
 </mat-tab-group>
