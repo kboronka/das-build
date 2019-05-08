@@ -16,6 +16,14 @@ let PullRequestSchema = new Schema({
     type: String,
     required: true
   },
+  description: {
+    type: String,
+    required: true
+  },
+  ticket: {
+    type: String,
+    required: true
+  },
   repo: {
     type: String,
     required: true

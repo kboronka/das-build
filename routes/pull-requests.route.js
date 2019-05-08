@@ -54,6 +54,8 @@ router.post('/add',
   (req, res) => {
     let branch = new PullRequest({
       name: req.body.name,
+      description: req.body.description,
+      ticket: req.body.ticket,
       repo: req.body.repo,
       author: req.body.author,
       state: States.RequiresAppoval
