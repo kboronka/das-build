@@ -35,6 +35,12 @@ export class PullRequestsComponent implements OnInit {
     this.fetchUser();
   }
 
+  getTabCount(list: IPullRequest[]) {
+    if (!list || list.length <= 0) return '';
+
+    return '(' + list.length.toString() + ')';
+  }
+
   fetchPullRequests(author: String) {
     this.pullRequestService
       .getPullRequestsByAuthor(author)

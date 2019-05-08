@@ -1,49 +1,29 @@
 <mat-tab-group>
-  <mat-tab label="Yours {{ all && all.length > 0 && '(' + all.length.toString() + ')' }}">
-    <mat-card *ngFor="let pr of all">
-      <mat-card-content>
-        {{ pr.name }}
-      </mat-card-content>
-    </mat-card>
+  <mat-tab label="Yours {{ getTabCount(all) }}">
+    <app-pull-request-card *ngFor="let pr of all"
+                           [pullRequest]="pr"></app-pull-request-card>
   </mat-tab>
 
-  <mat-tab label="Requires Approval {{ requireAppoval && requireAppoval.length > 0 && '(' + requireAppoval.length.toString() + ')' }}">
-    <mat-card *ngFor="let pr of requireAppoval">
-      <mat-card-content>
-        {{ pr.name }}
-      </mat-card-content>
-    </mat-card>
+  <mat-tab label="Requires Approval {{ getTabCount(requireAppoval) }}">
+    <app-pull-request-card *ngFor="let pr of requireAppoval"
+                           [pullRequest]="pr"></app-pull-request-card>
   </mat-tab>
 
-  <mat-tab label="Ready to Queue {{ reqdyToQueue && reqdyToQueue.length > 0 && '(' + reqdyToQueue.length.toString() + ')' }}">
-    <mat-card *ngFor="let pr of reqdyToQueue">
-      <mat-card-content>
-        {{ pr.name }}
-      </mat-card-content>
-    </mat-card>
+  <mat-tab label="Ready to Queue {{ getTabCount(reqdyToQueue) }}">
+    <app-pull-request-card *ngFor="let pr of reqdyToQueue"
+                           [pullRequest]="pr"></app-pull-request-card>
   </mat-tab>
 
-  <mat-tab label="In Queue {{ inQueue && inQueue.length > 0 && '(' + inQueue.length.toString() + ')' }}">
-    <mat-card *ngFor="let pr of inQueue">
-      <mat-card-content>
-        {{ pr.name }}
-      </mat-card-content>
-    </mat-card>
+  <mat-tab label="In Queue {{ getTabCount(inQueue) }}">
+    <app-pull-request-card *ngFor="let pr of inQueue"
+                           [pullRequest]="pr"></app-pull-request-card>
   </mat-tab>
 
-  <mat-tab label="Passed {{ passed && passed.length > 0 && '(' + passed.length.toString() + ')' }}">
-    <mat-card *ngFor="let pr of passed">
-      <mat-card-content>
-        {{ pr.name }}
-      </mat-card-content>
-    </mat-card>
+  <mat-tab label="Passed {{ getTabCount(passed) }}">
+    <app-pull-request-card *ngFor="let pr of passed"
+                           [pullRequest]="pr"></app-pull-request-card>
   </mat-tab>
-
-  <mat-tab label="Failed {{ failed && failed.length > 0 && '(' + failed.length.toString() + ')' }}">
-    <mat-card *ngFor="let pr of failed">
-      <mat-card-content>
-        {{ pr.name }}
-      </mat-card-content>
-    </mat-card>
-  </mat-tab>
+  failed {{ getTabCount(failed) }}">
+  <app-pull-request-card *ngFor="let pr of failed"
+                         [pullRequest]="pr"></app-pull-request-card>
 </mat-tab-group>

@@ -30,6 +30,7 @@ import { ProjectComponent } from './components/project/project.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { StepFormComponent } from './components/step-form/step-form.component';
 import { PullRequestsComponent } from './components/pull-requests/pull-requests.component';
+import { PullRequestCardComponent } from './components/pull-request-card/pull-request-card.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -56,7 +57,8 @@ const routes: Routes = [
     ProjectEditComponent,
     ProjectComponent,
     StepFormComponent,
-    PullRequestsComponent
+    PullRequestsComponent,
+    PullRequestCardComponent
   ],
   imports: [
     BrowserModule,
