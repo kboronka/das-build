@@ -4,3 +4,19 @@
   margin-left: 40px;
   margin-right: 40px;
 }
+
+.card-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.approvers {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+}
+
+.card-row {
+  display: flex;
+  flex-direction: row;
+}

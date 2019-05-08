@@ -1,17 +1,21 @@
 <mat-card class="pull-request-card">
-  <mat-card-header class="card-left">
-    <img mat-card-avatar src="/assets/default-avatar.png" alt="User Avatar">
-    <mat-card-title class="description">{{ pullRequest.description }} ({{ pullRequest.ticket }})</mat-card-title>
-    <mat-card-subtitle class="author">opened by <b>{{ pullRequest.author }}</b> {{ pullRequest.created | timeAgo }}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content class="card-middle">
-    <div class="info">
-      <div class="description">
-
-      </div>
-      <div>
-
-      </div>
+  <div class="card-row">
+    <div class="card-left">
+      <mat-card-header>
+        <img mat-card-avatar src="/assets/default-avatar.png" alt="User Avatar">
+        <mat-card-title class="description">{{ pullRequest.description }} ({{ pullRequest.ticket }})</mat-card-title>
+        <mat-card-subtitle class="author">opened by <b>{{ pullRequest.author }}</b> {{ pullRequest.created | timeAgo }}</mat-card-subtitle>
+      </mat-card-header>
     </div>
-  </mat-card-content>
+    <div class="approvers">
+      <mat-card-header>
+        <img mat-card-avatar src="/assets/default-avatar.png" alt="User Avatar">
+        <img mat-card-avatar src="/assets/default-avatar.png" alt="User Avatar">
+        <img mat-card-avatar src="/assets/default-avatar.png" alt="User Avatar">
+        <img mat-card-avatar src="/assets/default-avatar.png" alt="User Avatar">
+        <img mat-card-avatar src="/assets/default-avatar.png" alt="User Avatar">
+      </mat-card-header>
+    </div>
+  </div>
+
 </mat-card>
