@@ -5,6 +5,10 @@
   margin-right: 40px;
 }
 
+.author {
+  margin-bottom: 0px;
+}
+
 .card-left {
   display: flex;
   flex-direction: column;
@@ -16,9 +20,14 @@
   margin-left: auto;
 }
 
+.approvers img {
+  margin-left: 5px;
+}
+
 .approver-accepted {
-  border: solid;
+  outline: none;
   border-color: green;
+  box-shadow: 0 0 10px green
 }
 
 .actions {
