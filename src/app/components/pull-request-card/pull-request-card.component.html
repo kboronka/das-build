@@ -25,7 +25,9 @@
       </mat-card-header>
     </div>
     <div class="actions">
-      <button mat-flat-button color="primary">Queue</button>
+      <button mat-flat-button
+              color="primary"
+              [disabled]="isNotReadyToQueue()">Queue</button>
     </div>
   </div>
 

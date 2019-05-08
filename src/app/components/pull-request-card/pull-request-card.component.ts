@@ -14,4 +14,8 @@ export class PullRequestCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  isNotReadyToQueue() {
+    return this.pullRequest.state != 'Approved';
+  }
+
 }
