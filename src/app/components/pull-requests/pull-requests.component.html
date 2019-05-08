@@ -1,5 +1,5 @@
 <mat-tab-group>
-  <mat-tab label="Yours {{ requireAppoval && '(' + all.length.toString() + ')' }}">
+  <mat-tab label="Yours {{ all && all.length > 0 && '(' + all.length.toString() + ')' }}">
     <mat-card *ngFor="let pr of all">
       <mat-card-content>
         {{ pr.name }}
@@ -7,7 +7,7 @@
     </mat-card>
   </mat-tab>
 
-  <mat-tab label="Requires Approval {{ requireAppoval && '(' + requireAppoval.length.toString() + ')' }}">
+  <mat-tab label="Requires Approval {{ requireAppoval && requireAppoval.length > 0 && '(' + requireAppoval.length.toString() + ')' }}">
     <mat-card *ngFor="let pr of requireAppoval">
       <mat-card-content>
         {{ pr.name }}
@@ -15,7 +15,7 @@
     </mat-card>
   </mat-tab>
 
-  <mat-tab label="Ready to Queue {{ reqdyToQueue && '(' + reqdyToQueue.length.toString() + ')' }}">
+  <mat-tab label="Ready to Queue {{ reqdyToQueue && reqdyToQueue.length > 0 && '(' + reqdyToQueue.length.toString() + ')' }}">
     <mat-card *ngFor="let pr of reqdyToQueue">
       <mat-card-content>
         {{ pr.name }}
@@ -23,7 +23,7 @@
     </mat-card>
   </mat-tab>
 
-  <mat-tab label="In Queue {{ inQueue && '(' + inQueue.length.toString() + ')' }}">
+  <mat-tab label="In Queue {{ inQueue && inQueue.length > 0 && '(' + inQueue.length.toString() + ')' }}">
     <mat-card *ngFor="let pr of inQueue">
       <mat-card-content>
         {{ pr.name }}
@@ -31,7 +31,7 @@
     </mat-card>
   </mat-tab>
 
-  <mat-tab label="Passed {{ passed && '(' + passed.length.toString() + ')' }}">
+  <mat-tab label="Passed {{ passed && passed.length > 0 && '(' + passed.length.toString() + ')' }}">
     <mat-card *ngFor="let pr of passed">
       <mat-card-content>
         {{ pr.name }}
@@ -39,7 +39,7 @@
     </mat-card>
   </mat-tab>
 
-  <mat-tab label="Failed {{ failed && '(' + failed.length.toString() + ')' }}">
+  <mat-tab label="Failed {{ failed && failed.length > 0 && '(' + failed.length.toString() + ')' }}">
     <mat-card *ngFor="let pr of failed">
       <mat-card-content>
         {{ pr.name }}
