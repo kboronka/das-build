@@ -41,7 +41,8 @@ let PullRequestSchema = new Schema({
   created: {
     type: Date,
     required: true
-  }
+  },
+  approvers: [String]
 });
 
 export const PullRequest = mongoose.model('PullRequest', PullRequestSchema);

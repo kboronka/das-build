@@ -58,7 +58,8 @@ router.post('/add',
       repo: req.body.repo,
       author: req.body.author,
       state: States.RequiresAppoval,
-      created: req.body.created
+      created: req.body.created,
+      approvers: []
     });
 
     if (req.body.ticket) {
