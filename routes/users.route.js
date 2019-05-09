@@ -13,7 +13,8 @@ router.post('/register', (req, res) => {
     email: req.body.email,
     username: req.body.username,
     password: req.body.password,
-    admin: req.body.admin
+    admin: req.body.admin,
+    avatarUrl: '/assets/default-avatar.png'
   });
 
   User.addUser(newUser, (err, user) => {
@@ -25,6 +26,20 @@ router.post('/register', (req, res) => {
     }
   });
 });
+
+// update avatar
+router.post('/update-avatar',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    User.updateUserAvatar(req.body.username, req.body.avatarUrl, (err, user) => {
+      if (err) {
+        res.status(400);
+        res.json({ success: false, msg: err });
+      } else {
+        res.json({ success: true, msg: 'avatarUrl saved' });
+      }
+    });
+  });
 
 // Authenticate
 router.post('/authenticate', (req, res) => {
@@ -53,7 +68,8 @@ router.post('/authenticate', (req, res) => {
             name: user.name,
             username: user.username,
             email: user.email,
-            admin: user.admin
+            admin: user.admin,
+            avatarUrl: user.avatarUrl
           }
         });
       } else {

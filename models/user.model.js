@@ -23,7 +23,8 @@ let UserSchema = new Schema({
     type: Boolean,
     required: true,
     default: false
-  }
+  },
+  avatarUrl: String
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
@@ -54,6 +55,13 @@ module.exports.addUser = function(newUser, callback) {
     });
   });
 }
+
+module.exports.updateUserAvatar = function(username, avatarUrl, callback) {
+  var query = { username: username };
+  var update = { $set: { "avatarUrl": avatarUrl } };
+  User.updateOne(query, update, callback);
+}
+
 
 module.exports.comparePassword = function(candidatePassword, hash, callback) {
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
