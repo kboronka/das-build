@@ -55,7 +55,7 @@ export function getPullRequestById(id, callback) {
   PullRequest.findById(id, callback);
 }
 
-export function getPullRequestsByAuthor(author, callback) {
+export function getPullRequestsByProject(author, callback) {
   var query = { author: author };
   PullRequest.find(query, callback);
 }

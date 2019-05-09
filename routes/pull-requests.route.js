@@ -4,7 +4,7 @@ import {
   PullRequest,
   getPullRequests,
   getPullRequestById,
-  getPullRequestsByAuthor,
+  getPullRequestsByProject,
   addPullRequest,
   deletePullRequest,
   States
@@ -12,7 +12,7 @@ import {
 
 const router = express.Router();
 
-// get list of branches
+// get list of pull requests
 router.get('/', (req, res) => {
   getPullRequests((err, branches) => {
     if (err) {
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
   });
 });
 
-// get a single branch
+// get a single pull request
 router.get('/:id', (req, res) => {
   getPullRequestById(req.params.id, (err, branch) => {
     if (err) {
@@ -36,9 +36,9 @@ router.get('/:id', (req, res) => {
   });
 });
 
-// get a single branch
-router.get('/author/:author', (req, res) => {
-  getPullRequestsByAuthor(req.params.author, (err, branch) => {
+// get all pull request for a project
+router.get('/project/:project', (req, res) => {
+  getPullRequestsByProject(req.params.project, (err, branch) => {
     if (err) {
       res.status(400);
       res.json(err);

@@ -41,9 +41,9 @@ export class PullRequestsComponent implements OnInit {
     return '(' + list.length.toString() + ')';
   }
 
-  fetchPullRequests(author: String) {
+  fetchPullRequests(project: String) {
     this.pullRequestService
-      .getPullRequestsByAuthor(author)
+      .getPullRequestsByProject(project)
       .subscribe((data: IPullRequest[]) => {
         this.all = data;
         this.requireAppoval = data.filter(pr => pr.state == 'Open');

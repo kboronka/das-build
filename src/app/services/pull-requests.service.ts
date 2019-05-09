@@ -16,12 +16,12 @@ export class PullRequestsService {
     return this.http.get<[IPullRequest]>('pr', { headers: header });
   }
 
-  getPullRequestsByAuthor(author: String) {
+  getPullRequestsByProject(project: String) {
     const header = new HttpHeaders()
       .append('Authorization', localStorage.getItem('id_token'));
 
     return this.http.get<[IPullRequest]>(
-      `pr/author/${author}`,
+      `pr/project/${project}`,
       { headers: header });
   }
 }
