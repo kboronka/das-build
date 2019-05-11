@@ -1,3 +1,5 @@
+import { IUser } from './user.interface';
+
 export interface IPullRequest {
   name: string;
   description: string;
@@ -7,4 +9,5 @@ export interface IPullRequest {
   author: string;
   state: string;
   created: Date;
+  authorDetails: [IUser];
 }

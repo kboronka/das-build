@@ -2,7 +2,9 @@
   <div class="card-row">
     <div class="card-left">
       <mat-card-header>
-        <img mat-card-avatar src="/assets/default-avatar.png" alt="User Avatar">
+        <img mat-card-avatar
+             [src]="(pullRequest.authorDetails[0] && pullRequest.authorDetails[0].avatarUrl) || '/assets/default-avatar.png'">
+        <!-- <app-user-avatar [user]="pullRequest.authorDetails[0]"></app-user-avatar> -->
         <mat-card-title class="description">{{ pullRequest.description }} <span *ngIf="pullRequest && pullRequest.ticket">(<a [href]="pullRequest.ticketUrl">{{ pullRequest.ticket }}</a>)</span></mat-card-title>
         <mat-card-subtitle class="author">opened by <b>{{ pullRequest.author }}</b> {{ pullRequest.created | timeAgo }}</mat-card-subtitle>
       </mat-card-header>

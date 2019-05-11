@@ -48,7 +48,16 @@ let PullRequestSchema = new Schema({
 export const PullRequest = mongoose.model('PullRequest', PullRequestSchema);
 
 export function getPullRequests(callback) {
-  PullRequest.find(callback);
+  PullRequest
+    .aggregate([{
+      $lookup: {
+        from: 'users',
+        localField: 'author',
+        foreignField: 'username',
+        as: 'authorDetails'
+      }
+    }])
+    .exec(callback);
 }
 
 export function getPullRequestById(id, callback) {
@@ -56,8 +65,19 @@ export function getPullRequestById(id, callback) {
 }
 
 export function getPullRequestsByProject(author, callback) {
-  var query = { author: author };
-  PullRequest.find(query, callback);
+  PullRequest
+    .aggregate([{
+      $lookup: {
+        from: 'users',
+        localField: 'author',
+        foreignField: 'username',
+        as: 'authorDetails'
+      }
+    }])
+    .match({ author: author })
+    .exec(callback);
+
+  // PullRequest.find(query, callback);
 }
 
 export function addPullRequest(pullRequest, callback) {
